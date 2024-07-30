@@ -1,0 +1,98 @@
+.sidebarArea {
+  flex-shrink: 0;
+  background-color: $sidebarColor;
+  background-color: #2A3E4E;
+  border-right: 1px solid rgba(16, 15, 15, 1) !important;
+  position: sticky !important;
+  top: 0;
+  height: 100vh;
+  z-index: 99999;
+
+  .sidenav-bg:hover {
+    background-color: $gray-100;
+    border-radius: $border-radius;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .sidebarArea {
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    z-index: 1;
+    margin-left: -$sidebarWidth;
+    transition: 0.2s ease-in;
+
+    &.showSidebar {
+      margin-left: 0px;
+    }
+  }
+}
+
+// Modifying Custom Css
+.navbar-nav .nav-link {
+  color: #fff;
+}
+
+.navbar-nav {
+  color: #fff;
+  display: flex;
+  gap: 2rem;
+}
+
+.dropend .dropdown-toggle {
+  color: rgb(29, 134, 176);
+  margin-left: 1em;
+}
+
+.dropdown-item {
+  background-color: #405768;
+  color: white;
+  border-radius: 4px;
+  
+}
+
+.dropdown-item:hover {
+  color: white;
+  background-color: #4e6577 !important;
+  transition: cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+.dropdown-menu {
+  --bs-dropdown-min-width: none !important;
+  padding: 0;
+  border-radius: 4px;
+  width: 18rem !important;
+  // background-color: #d6eaf8;
+}
+
+.dropstart .dropdown-menu[data-bs-popper] {
+  top: 106%;
+  right: 0;
+}
+
+.nav-item .dropdown-menu {
+  text-align: center;
+  display: none !important;
+
+}
+
+.nav-item:hover>.dropdown-menu,
+.dropend:hover>.dropdown-menu {
+  display: block !important;
+  position: absolute;
+  top: 9px;
+  left: 80%;
+}
+
+@media screen and (min-width: 769px) {
+  .dropend:hover>.dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+
+  .dropend .dropdown-toggle {
+    margin-left: 0.5em;
+  }
+}
