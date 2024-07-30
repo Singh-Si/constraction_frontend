@@ -8,8 +8,6 @@ import BackIcon from "@/components/utils/global/BackIcon";
 
 const SiteTransfer = () => {
     return (
-<<<<<<< HEAD
-=======
         <div>
                <div className="site-profile">
         <div className="site-profile-heading">
@@ -20,7 +18,6 @@ const SiteTransfer = () => {
         </div>
 
       </div>
->>>>>>> 463abe6 (frontend additonals changes made)
         <StocksLayout current="site-transfer">
             <div className='row bg-light-blue d-flex justify-content-end'>
                 <span className='text-blue fw-bold p-2'><BackIcon/>Site Transfer</span>
@@ -102,10 +99,7 @@ const SiteTransfer = () => {
 
 
         </StocksLayout>
-<<<<<<< HEAD
-=======
         </div>
->>>>>>> 463abe6 (frontend additonals changes made)
     )
 }
 

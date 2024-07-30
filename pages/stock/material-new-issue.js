@@ -65,9 +65,7 @@ const AddMaterialComponent  = ()=>{
                 <div>
                     <p style={{color : 'rgba(144, 152, 177, 0.7)'}}>No issued Material yet </p>
                 <Button onClick={handleModal} style={{backgroundColor : 'rgba(32, 117, 169, 1)' , color : 'white' , padding : "0.8rem  1rem" , borderRadius : "0.3rem" , fontWeight : "bold"}}>+ ISSUED MATERIAL</Button>
-                </div>
-                {modal && <ModalComponent /> }
-                
+                </div>        
             </div>
         </>
     )
