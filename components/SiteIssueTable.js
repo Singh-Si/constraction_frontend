@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { parseCookies } from 'nookies';
 import config from '@/config/config';
 import EditIssueModal from '@/components/utils/Modal/EditIssueModal';
+=======
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { parseCookies } from "nookies";
+import config from "@/config/config";
+import EditIssueModal from "@/components/utils/Modal/EditIssueModal";
+>>>>>>> 463abe6 (frontend additonals changes made)
 
 const SiteIssueTable = () => {
   const [issueData, setIssueData] = useState([]);
@@ -11,6 +19,10 @@ const SiteIssueTable = () => {
   const { token, siteId, currentOrganizationId } = parseCookies();
   const [editModalVisible, setEditModalVisible] = useState(false);
   const [currentIssueId, setCurrentIssueId] = useState(null);
+<<<<<<< HEAD
+=======
+  const [editedData, setEditedData] = useState({});
+>>>>>>> 463abe6 (frontend additonals changes made)
 
   useEffect(() => {
     const fetchIssues = async () => {
@@ -19,16 +31,28 @@ const SiteIssueTable = () => {
           params: {
             organization: currentOrganizationId,
             site: siteId,
+<<<<<<< HEAD
             status: 'Pending'
+=======
+            status: "Pending",
+>>>>>>> 463abe6 (frontend additonals changes made)
           },
           headers: { Authorization: `Bearer ${token}` },
         });
 
         if (response?.data?.issueData) {
+<<<<<<< HEAD
           setIssueData(response.data.issueData);
         }
       } catch (error) {
         console.error('Error fetching issues:', error);
+=======
+          console.log(`This is the ${JSON.stringify(response.data.issueData)}`);
+          setIssueData(response.data.issueData);
+        }
+      } catch (error) {
+        console.error("Error fetching issues:", error);
+>>>>>>> 463abe6 (frontend additonals changes made)
         setError(error);
       } finally {
         setLoading(false);
@@ -69,6 +93,7 @@ const SiteIssueTable = () => {
 
   const handleDeleteClick = async (issueId) => {
     try {
+<<<<<<< HEAD
       const response = await axios.delete(
         `${config.API_URL}/issue/delete`,
         {
@@ -84,6 +109,20 @@ const SiteIssueTable = () => {
       setIssueData(issueData.filter(issue => issue._id !== issueId));
     } catch (error) {
       console.error('Error deleting issue:', error.response?.data?.error);
+=======
+      const response = await axios.delete(`${config.API_URL}/issue/delete`, {
+        params: {
+          organization: currentOrganizationId,
+          site: siteId,
+          sitIssueId: issueId,
+        },
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log("Issue successfully deleted:", response.data);
+      setIssueData(issueData.filter((issue) => issue._id !== issueId));
+    } catch (error) {
+      console.error("Error deleting issue:", error.response?.data?.error);
+>>>>>>> 463abe6 (frontend additonals changes made)
     }
   };
   const confirmDelete = async (issueId) => {
@@ -94,13 +133,21 @@ const SiteIssueTable = () => {
   const handleEditClick = (issueId) => {
     setCurrentIssueId(issueId);
     setEditModalVisible(true);
+<<<<<<< HEAD
+=======
+    setEditedData(issueData.filter((issue) => issue._id == issueId));
+>>>>>>> 463abe6 (frontend additonals changes made)
   };
 
   const handleCloseModal = () => {
     setEditModalVisible(false);
   };
+<<<<<<< HEAD
   
   
+=======
+
+>>>>>>> 463abe6 (frontend additonals changes made)
   return (
     <div className="row-sm">
       <ul className="mt-4 p-0 text-decoration-none list-style-none w-100 shadow-sm m-auto small">
@@ -143,6 +190,10 @@ const SiteIssueTable = () => {
         </li>
 
         {/* Data rows */}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 463abe6 (frontend additonals changes made)
         {issueData.map((issue, index) => (
           <li key={issue._id} className="list-group-item">
             <div className="text-decoration-none text-black">
@@ -151,6 +202,7 @@ const SiteIssueTable = () => {
                   <small className="w-100 text-center">{index + 1}</small>
                 </div>
                 <div className="border p-3 col-1 d-flex align-items-center px-2 m-0 gap-3">
+<<<<<<< HEAD
                   <small className="w-100 text-center">{issue?.issueTitle}</small>
                 </div>
                 <div className="border p-3 col-2 d-flex align-items-center px-2 m-0 gap-3">
@@ -161,12 +213,33 @@ const SiteIssueTable = () => {
                 </div>
                 <div className="border p-3 col-1 d-flex align-items-center px-2 m-0 gap-3">
                   <small className="w-100 text-center">{issue.floor?.name}</small>
+=======
+                  <small className="w-100 text-center">
+                    {issue?.issueTitle}
+                  </small>
+                </div>
+                <div className="border p-3 col-2 d-flex align-items-center px-2 m-0 gap-3">
+                  <small className="w-100 text-center">
+                    {issue.reason || "N/A"}
+                  </small>
+                </div>
+                <div className="border p-3 col-2 d-flex align-items-center px-2 m-0 gap-3">
+                  <small className="w-100 text-center">
+                    {issue.workCategory?.name}
+                  </small>
+                </div>
+                <div className="border p-3 col-1 d-flex align-items-center px-2 m-0 gap-3">
+                  <small className="w-100 text-center">
+                    {issue.floor?.name}
+                  </small>
+>>>>>>> 463abe6 (frontend additonals changes made)
                 </div>
                 <div className="border p-3 col-1 d-flex align-items-center px-2 m-0 gap-3">
                   <small className="w-100 text-center">{issue.status}</small>
                 </div>
                 <div className="border p-3 col-1 d-flex align-items-center px-2 m-0 gap-3">
                   {issue.assignUser && issue.assignUser.length > 0 && (
+<<<<<<< HEAD
                     <small className="w-100 text-center">{issue.assignUser.map(user => user.name).join(', ')}</small>
                   )}
                 </div>
@@ -175,11 +248,35 @@ const SiteIssueTable = () => {
                 </div>
                 <div className="border p-3 col-1 d-flex align-items-center px-2 m-0 gap-3">
                   <button className="btn btn-link" onClick={() => handleEditClick(issue._id)}>
+=======
+                    <small className="w-100 text-center">
+                      {issue.assignUser.map((user) => user.name).join(", ")}
+                    </small>
+                  )}
+                </div>
+                <div className="border p-3 col-1 d-flex align-items-center px-2 m-0 gap-3">
+                  <small className="w-100 text-center">
+                    {issue.dueDate || "N/A"}
+                  </small>
+                </div>
+                <div className="border p-3 col-1 d-flex align-items-center px-2 m-0 gap-3">
+                  <button
+                    className="btn btn-link"
+                    onClick={() => handleEditClick(issue._id)}
+                  >
+>>>>>>> 463abe6 (frontend additonals changes made)
                     <i className="bi bi-pencil-square"></i>
                   </button>
                 </div>
                 <div className="border p-3 col-1 d-flex align-items-center px-2 m-0 gap-3">
+<<<<<<< HEAD
                   <button className="btn btn-link" onClick={() => confirmDelete(issue._id,handleDeleteClick)}>
+=======
+                  <button
+                    className="btn btn-link"
+                    onClick={() => confirmDelete(issue._id, handleDeleteClick)}
+                  >
+>>>>>>> 463abe6 (frontend additonals changes made)
                     <i className="bi bi-trash text-danger cursor-pointer fs-5"></i>
                   </button>
                 </div>
@@ -191,7 +288,14 @@ const SiteIssueTable = () => {
       {editModalVisible && (
         <EditIssueModal
           showModal={editModalVisible}
+<<<<<<< HEAD
           handleCloseModal={handleCloseModal}
+=======
+          editedData={editedData}
+          handleCloseModal={handleCloseModal}
+          issueData={issueData}
+          SetIssueData={setIssueData}
+>>>>>>> 463abe6 (frontend additonals changes made)
           issueId={currentIssueId}
           fetchIssues={() => {
             setLoading(true);

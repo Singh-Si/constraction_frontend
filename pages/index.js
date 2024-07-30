@@ -13,8 +13,16 @@ const Starter = () => {
   const [filterText, setFilterText] = useState("");
   const [loading, setLoading] = useState(false);
   const [existingSiteNames, setExistingSiteNames] = useState([]);
+<<<<<<< HEAD
   const dispatch = useDispatch();
   const { permissions, status } = useSelector((state) => state?.UserPermisionSlice);
+=======
+  const [deletion, setDeletion] = useState(false);
+  const dispatch = useDispatch();
+  const { permissions, status } = useSelector(
+    (state) => state?.UserPermisionSlice
+  );
+>>>>>>> 463abe6 (frontend additonals changes made)
   const { userData } = useSelector((state) => state?.siteSlice);
 
   useEffect(() => {
@@ -22,11 +30,19 @@ const Starter = () => {
     let data = {
       context: context,
       plan: "project_management",
+<<<<<<< HEAD
       feature: "sites"
     };
 
     dispatch(checkPermissions(data));
   }, [dispatch]);
+=======
+      feature: "sites",
+    };
+
+    dispatch(checkPermissions(data));
+  }, [dispatch, deletion]);
+>>>>>>> 463abe6 (frontend additonals changes made)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +51,11 @@ const Starter = () => {
       setLoading(false);
 
       if (result.payload && result.payload.sites) {
+<<<<<<< HEAD
         setExistingSiteNames(result.payload.sites.map(site => site.name));
+=======
+        setExistingSiteNames(result.payload.sites.map((site) => site.name));
+>>>>>>> 463abe6 (frontend additonals changes made)
       }
     };
 
@@ -43,9 +63,15 @@ const Starter = () => {
   }, [dispatch]);
 
   const handleSetId = (id) => {
+<<<<<<< HEAD
     nookies.set(null, 'siteId', id, {
       maxAge: 30 * 24 * 60 * 60, // Expires in 30 days
       path: '/',
+=======
+    nookies.set(null, "siteId", id, {
+      maxAge: 30 * 24 * 60 * 60, // Expires in 30 days
+      path: "/",
+>>>>>>> 463abe6 (frontend additonals changes made)
     });
   };
 
@@ -54,7 +80,11 @@ const Starter = () => {
     // await createSite(newSiteName);
 
     // Update the list of existing site names
+<<<<<<< HEAD
     setExistingSiteNames(prevNames => [...prevNames, newSiteName]);
+=======
+    setExistingSiteNames((prevNames) => [...prevNames, newSiteName]);
+>>>>>>> 463abe6 (frontend additonals changes made)
 
     // Fetch the updated user data
     await dispatch(fetchUserData());
@@ -72,7 +102,11 @@ const Starter = () => {
 
   return (
     <>
+<<<<<<< HEAD
       {status === 'failed' && (
+=======
+      {status === "failed" && (
+>>>>>>> 463abe6 (frontend additonals changes made)
         <div className="row ">
           <Image
             priority
@@ -80,7 +114,16 @@ const Starter = () => {
             width={200}
             height={300}
             alt="access_denied"
+<<<<<<< HEAD
             style={{ width: "auto", height: "auto", textAlign: "center", margin: "auto" }}
+=======
+            style={{
+              width: "auto",
+              height: "auto",
+              textAlign: "center",
+              margin: "auto",
+            }}
+>>>>>>> 463abe6 (frontend additonals changes made)
           />
           <div className="row d-flex justify-content-center">
             <div className="col-2 mt-4">
@@ -106,8 +149,19 @@ const Starter = () => {
                   value={filterText}
                 />
                 {!filterText?.length > 0 && (
+<<<<<<< HEAD
                   <span className="input-group-append d-flex align-items-center position-absolute" style={{ right: 18, display: "flex" }}>
                     <i className="bi bi-search" style={{ color: "#8CBCD9" }}></i>
+=======
+                  <span
+                    className="input-group-append d-flex align-items-center position-absolute"
+                    style={{ right: 18, display: "flex" }}
+                  >
+                    <i
+                      className="bi bi-search"
+                      style={{ color: "#8CBCD9" }}
+                    ></i>
+>>>>>>> 463abe6 (frontend additonals changes made)
                   </span>
                 )}
               </div>
@@ -130,6 +184,7 @@ const Starter = () => {
           <div className="row">
             {filteredItems && filteredItems?.length > 0 ? (
               <>
+<<<<<<< HEAD
                 {filteredItems && filteredItems?.map((curVal, index) => {
                   const { name, profile, subtitle, client, _id, startDate, endDate, inviteAccepted } = curVal;
                   return (
@@ -170,6 +225,66 @@ const Starter = () => {
         </>
       )}
       <CreateProject onCreateSite={handleCreateSite} existingSiteNames={existingSiteNames} />
+=======
+                {filteredItems &&
+                  filteredItems?.map((curVal, index) => {
+                    const {
+                      name,
+                      profile,
+                      subtitle,
+                      client,
+                      _id,
+                      startDate,
+                      endDate,
+                      inviteAccepted,
+                    } = curVal;
+                    return (
+                      <div
+                        className="col-sm-6  col-xl-3"
+                        key={index}
+                        onClick={() => handleSetId(_id)}
+                      >
+                        <DashboardCard
+                          profile={profile}
+                          title={name}
+                          subtitle={subtitle}
+                          client={client}
+                          startdate={startDate}
+                          enddate={endDate}
+                          id={_id}
+                          inviteAccepted={inviteAccepted}
+                          update={permissions?.permission?.permission?.update}
+                        />
+                      </div>
+                    );
+                  })}
+              </>
+            ) : loading ? (
+              <Loader />
+            ) : (
+              <div className="row m-auto justify-content-center">
+                <div className="col-3 text-center">
+                  <Image
+                    priority
+                    src="/assets/images/nosites.jpg"
+                    alt="nosites"
+                    width={350}
+                    height={250}
+                  />
+                  <span className="fs-3 fw-bold">No Sites Found</span>
+                  <br />
+                  <small>Start by creating your first Site. </small>
+                </div>
+              </div>
+            )}
+          </div>
+        </>
+      )}
+      <CreateProject
+        onCreateSite={handleCreateSite}
+        existingSiteNames={existingSiteNames}
+      />
+>>>>>>> 463abe6 (frontend additonals changes made)
     </>
   );
 };

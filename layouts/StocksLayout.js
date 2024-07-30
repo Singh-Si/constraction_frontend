@@ -18,14 +18,43 @@ const StocksLayout = ({ children, current }) => {
             role="tablist"
           >
             <div className="d-flex">
+<<<<<<< HEAD
               
+=======
+>>>>>>> 463abe6 (frontend additonals changes made)
               {/* <Link href={`/stock/bom`} className="nav-item text-decoration-none" role="presentation">
                                 <button className={`nav-link ${current == "bom" ? "active" : ""}`} id="home-tab" data-bs-toggle="tab" data-bs-target="#inventary-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">BOM</button>
                             </Link> */}
 
               <Link
+<<<<<<< HEAD
                 href={`/stock/indents?siteId=${siteId}`}
                 className="nav-item text-decoration-none"
+=======
+                href={`/stock/inventory`}
+                className="nav-item text-decoration-none stock-nav"
+                role="presentation"
+              >
+                <button
+                  className={`nav-link ${
+                    current == "inventory" ? "active" : ""
+                  }`}
+                  id="home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#inventary-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="home-tab-pane"
+                  aria-selected="true"
+                >
+                  Inventory{" "}
+                </button>
+              </Link>
+
+              <Link
+                href={`/stock/indents?siteId=${siteId}`}
+                className="nav-item text-decoration-none stock-nav"
+>>>>>>> 463abe6 (frontend additonals changes made)
                 role="presentation"
               >
                 <button
@@ -42,6 +71,7 @@ const StocksLayout = ({ children, current }) => {
                 </button>
               </Link>
               <Link
+<<<<<<< HEAD
                 href={`/stock/inventory`}
                 className="nav-item text-decoration-none"
                 role="presentation"
@@ -65,6 +95,10 @@ const StocksLayout = ({ children, current }) => {
               <Link
                 href={`/stock/purchaseOrders`}
                 className="nav-item text-decoration-none"
+=======
+                href={`/stock/purchaseOrders`}
+                className="nav-item text-decoration-none stock-nav"
+>>>>>>> 463abe6 (frontend additonals changes made)
                 role="presentation"
               >
                 <button
@@ -83,8 +117,13 @@ const StocksLayout = ({ children, current }) => {
                 </button>
               </Link>
               <Link
+<<<<<<< HEAD
                 href={`/stock/purchaseOrders`}
                 className="nav-item text-decoration-none"
+=======
+                href={`/stock/upcoming-deliveries`}
+                className="nav-item text-decoration-none stock-nav"
+>>>>>>> 463abe6 (frontend additonals changes made)
                 role="presentation"
               >
                 <button
@@ -123,10 +162,16 @@ const StocksLayout = ({ children, current }) => {
                 </button>
               </Link> */}
 
+<<<<<<< HEAD
             
               <Link
                 href={`/stock/grn`}
                 className="nav-item text-decoration-none"
+=======
+              <Link
+                href={`/stock/grn`}
+                className="nav-item text-decoration-none stock-nav"
+>>>>>>> 463abe6 (frontend additonals changes made)
                 role="presentation"
               >
                 <button
@@ -144,7 +189,11 @@ const StocksLayout = ({ children, current }) => {
               </Link>
               <Link
                 href={`/stock/material-new-issue`}
+<<<<<<< HEAD
                 className="nav-item text-decoration-none"
+=======
+                className="nav-item text-decoration-none stock-nav"
+>>>>>>> 463abe6 (frontend additonals changes made)
                 role="presentation"
               >
                 <button
@@ -164,7 +213,11 @@ const StocksLayout = ({ children, current }) => {
               </Link>
               <Link
                 href={`/stock/material-issue`}
+<<<<<<< HEAD
                 className="nav-item text-decoration-none"
+=======
+                className="nav-item text-decoration-none stock-nav"
+>>>>>>> 463abe6 (frontend additonals changes made)
                 role="presentation"
               >
                 <button
@@ -200,7 +253,11 @@ const StocksLayout = ({ children, current }) => {
                   BOQ{" "}
                 </button>
               </Link> */}
+<<<<<<< HEAD
               <Link
+=======
+              {/* <Link
+>>>>>>> 463abe6 (frontend additonals changes made)
                 href={`/stock/site-transfer`}
                 className="nav-item text-decoration-none"
                 role="presentation"
@@ -219,11 +276,16 @@ const StocksLayout = ({ children, current }) => {
                 >
                   Site Transfers{" "}
                 </button>
+<<<<<<< HEAD
               </Link>
+=======
+              </Link> */}
+>>>>>>> 463abe6 (frontend additonals changes made)
             </div>
           </ul>
         </div>
         <div>
+<<<<<<< HEAD
         {Array.isArray(childElements) && childElements.length > 0 ? (
             childElements.map((child, index) => (
               <div key={index}>
@@ -233,6 +295,16 @@ const StocksLayout = ({ children, current }) => {
           ) : (
             <div>No valid children to render</div>
           )}</div>
+=======
+          {Array.isArray(childElements) && childElements.length > 0
+            ? childElements.map((child, index) => (
+                <div key={index}>
+                  {React.isValidElement(child) ? child : null}
+                </div>
+              ))
+            : null}
+        </div>
+>>>>>>> 463abe6 (frontend additonals changes made)
       </div>
     </div>
   );

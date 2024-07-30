@@ -117,7 +117,11 @@ const addMember = async () => {
                                                         </div>
                                                         <div>
                                                             <label className="form-check-label text-black d-flex flex-column gap-1" htmlFor={`flexCheck${index}`}>
+<<<<<<< HEAD
                                                                 <span>{item?.name}</span>
+=======
+                                                                {/* <span>{item?.name}</span> */}
+>>>>>>> 463abe6 (frontend additonals changes made)
                                                             </label>
                                                         </div>
                                                     </div>

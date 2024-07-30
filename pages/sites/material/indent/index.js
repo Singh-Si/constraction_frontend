@@ -81,6 +81,18 @@ const Indent = () => {
   }, [selectedIndents]);
 
   return (
+<<<<<<< HEAD
+=======
+    <div>
+        <div className="site-profile" style={{marginBottom :"1rem" }}>
+        <div className="site-profile-heading">
+          <span style={{ color: "#FFFFFF", opacity: "0.6" }}>
+            Sites /{" "}
+          </span>
+          <span style={{ color: "white", marginLeft: "0.2rem" }}>Indent</span>
+        </div>
+        </div>
+>>>>>>> 463abe6 (frontend additonals changes made)
     <MaterialLayout current="indent">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <div>
@@ -181,6 +193,10 @@ console.log(activeItemId, "activeItemIdactiveItemIdactiveItemIdactiveItemIdactiv
       </div>
       <IndentCreateModal />
     </MaterialLayout>
+<<<<<<< HEAD
+=======
+    </div>
+>>>>>>> 463abe6 (frontend additonals changes made)
   );
 };
 

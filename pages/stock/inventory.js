@@ -14,6 +14,19 @@ const Inventory = () => {
   const { userData, status } = useSelector((state) => state.bomMaterialSlice);
   const [materials, setMaterials] = useState([]);
   const { token, currentOrganizationId, siteId } = parseCookies();
+<<<<<<< HEAD
+=======
+  const headerStyle = {
+    backgroundColor: "#405768",
+    color: "white",
+    borderRight: "1px solid #ddd",
+    borderBottom: "2px solid #ddd",
+  };
+  const bodyStyle = {
+    borderRight: "1px solid #ddd",
+    borderBottom: "1px solid #ddd",
+  };
+>>>>>>> 463abe6 (frontend additonals changes made)
 
   useEffect(() => {
     dispatch(fetchMaterialBomAsync());
@@ -41,7 +54,11 @@ const Inventory = () => {
     }
 
     fetchMaterials();
+<<<<<<< HEAD
   }, []); // Empty dependency array to run only once on component mount
+=======
+  }, []); 
+>>>>>>> 463abe6 (frontend additonals changes made)
 
   const handleAddMaterial = (newMaterial) => {
     // Assuming newMaterial is the format expected in your materials array
@@ -55,6 +72,19 @@ const Inventory = () => {
   };
 
   return (
+<<<<<<< HEAD
+=======
+    <div>
+        <div className="site-profile">
+        <div className="site-profile-heading">
+          <span style={{ color: "#FFFFFF", opacity: "0.6" }}>
+            Commercial /{" "}
+          </span>
+          <span style={{ color: "white", marginLeft: "0.2rem" }}>Inventory</span>
+        </div>
+
+      </div>
+>>>>>>> 463abe6 (frontend additonals changes made)
     <StocksLayout current="inventory">
       <div className="col-11 text-end mb-3">
         <button className='btn bg-btn-bg text-white new-site-btn' style={{ boxShadow: "2px 2px 13px #8CBCD9" }} type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">+ Add Material</button>
@@ -78,6 +108,7 @@ const Inventory = () => {
               className="p-datatable-striped"
 
               >
+<<<<<<< HEAD
               <Column field="materialCode" header="Material ID"  className='border-bottom' style={{ width: '100rem' }}></Column>
               <Column field="materialName" header="Material Name"  className='border-bottom' style={{ width: '170rem' }}></Column>
               <Column field="uom" header="UOM"  className='border-bottom' style={{ width: '100rem' }}></Column>
@@ -88,6 +119,18 @@ const Inventory = () => {
               <Column field="unitCost" header="Unit Cost"  className='border-bottom' style={{ width: '120rem' }}></Column>
               <Column field="description" header="Description"  className='border-bottom' style={{ width: '100rem' }}></Column>
               <Column field="hsn" header="HSN"  className='border-bottom' style={{ width: '133rem' }}></Column>
+=======
+              <Column field="materialCode" header="Material ID" bodyStyle={bodyStyle} className='border-bottom' headerStyle={headerStyle}  style={{ width: '100rem' }}></Column>
+              <Column field="materialName" header="Material Name" bodyStyle={bodyStyle} className='border-bottom' headerStyle={headerStyle}  style={{ width: '170rem' }}></Column>
+              <Column field="uom" header="UOM" bodyStyle={bodyStyle} className='border-bottom' headerStyle={headerStyle}  style={{ width: '100rem' }}></Column>
+              <Column field="brandName" header="Brand Name" bodyStyle={bodyStyle} className='border-bottom' headerStyle={headerStyle}  style={{ width: '150rem' }}></Column>
+              <Column field="gst" header="GST %" bodyStyle={bodyStyle} className='border-bottom' headerStyle={headerStyle}  style={{ width: '100rem' }}></Column>
+              <Column field="usedFromStocks" header="Used Stocks " bodyStyle={bodyStyle} className='border-bottom' headerStyle={headerStyle}  style={{ width: '150rem' }}></Column>
+              <Column field="inStocks" header="In Stocks" bodyStyle={bodyStyle} className='border-bottom' headerStyle={headerStyle}  style={{ width: '100rem' }}></Column>
+              <Column field="unitCost" header="Unit Cost" bodyStyle={bodyStyle} className='border-bottom' headerStyle={headerStyle}  style={{ width: '120rem' }}></Column>
+              <Column field="description" header="Description" bodyStyle={bodyStyle} className='border-bottom' headerStyle={headerStyle}  style={{ width: '100rem' }}></Column>
+              <Column field="hsn" header="HSN" bodyStyle={bodyStyle} headerStyle={headerStyle}  className='border-bottom' style={{ width: '133rem' }}></Column>
+>>>>>>> 463abe6 (frontend additonals changes made)
 
               {/* <Column header="Actions" body={() => <button className="btn btn-sm btn-primary">Edit</button>} style={{ width: '6rem', textAlign: 'center' }}></Column> */}
             </DataTable>
@@ -95,6 +138,10 @@ const Inventory = () => {
         </div>
       </div>
     </StocksLayout>
+<<<<<<< HEAD
+=======
+    </div>
+>>>>>>> 463abe6 (frontend additonals changes made)
   );
 };
 
