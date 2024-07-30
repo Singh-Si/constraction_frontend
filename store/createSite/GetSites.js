@@ -1,9 +1,6 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-<<<<<<< HEAD
-=======
 import config from "@/config/config";
->>>>>>> 463abe6 (frontend additonals changes made)
 import axios from 'axios';
 import { parseCookies } from 'nookies';
 import 'react-toastify/dist/ReactToastify.css';

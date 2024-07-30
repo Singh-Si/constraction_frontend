@@ -4,10 +4,6 @@ import Link from "next/link";
 import { parseCookies } from "nookies";
 import { toast } from "react-toastify";
 import { useState } from "react";
-<<<<<<< HEAD
-const DashboardCard = (props) => {
-  console.log(props, "propssssssssssssssssssssssssssss")
-=======
 import { Modal, Button } from "react-bootstrap";
 import { useRouter } from "next/router";
 
@@ -53,7 +49,6 @@ const DashboardCard = (props) => {
 
   const handleClose = () => setShowModal(false);
 
->>>>>>> 463abe6 (frontend additonals changes made)
   const menuStyles = {
     width: "180px !important",
     border: "1px solid black",
@@ -63,14 +58,8 @@ const DashboardCard = (props) => {
     backgroundColor: "white",
     color: "black",
   };
-<<<<<<< HEAD
-  const [imageUrl, setImageUrl] = useState('');
-
-  const { currentOrganizationId, token } = parseCookies();
-=======
 
   const [imageUrl, setImageUrl] = useState("");
->>>>>>> 463abe6 (frontend additonals changes made)
 
   const AcceptSite = async () => {
     try {
@@ -84,13 +73,9 @@ const DashboardCard = (props) => {
         }
       );
       if (response.data.success) {
-<<<<<<< HEAD
-        toast.success("Invitation Accepted Successfully", { position: "top-center" });
-=======
         toast.success("Invitation Accepted Successfully", {
           position: "top-center",
         });
->>>>>>> 463abe6 (frontend additonals changes made)
       }
     } catch (error) {
       console.error("Error Site Accepting:", error);
@@ -103,25 +88,17 @@ const DashboardCard = (props) => {
       <div className="w-full ">
         <Link
           href={{
-<<<<<<< HEAD
-            pathname: props.inviteAccepted ? '/sites/siteplan' : '/',
-=======
             pathname: props.inviteAccepted ? "/sites/siteplan" : "/",
->>>>>>> 463abe6 (frontend additonals changes made)
           }}
           className="text-decoration-none"
         >
           <img
             className="d-block m-auto rounded"
             alt="Card image cap"
-<<<<<<< HEAD
-            src={props?.profile || "https://th.bing.com/th/id/OIP.DMbQ2iorpKMPwSjRnEiMiAHaEK?rs=1&pid=ImgDetMain"} // Use the provided image URL or a default image
-=======
             src={
               props?.profile ||
               "https://th.bing.com/th/id/OIP.DMbQ2iorpKMPwSjRnEiMiAHaEK?rs=1&pid=ImgDetMain"
             } // Use the provided image URL or a default image
->>>>>>> 463abe6 (frontend additonals changes made)
             width="100%"
             height="100%"
           />
@@ -131,26 +108,18 @@ const DashboardCard = (props) => {
       <div className="card-body">
         <div className="row">
           <div className="col-8">
-<<<<<<< HEAD
-            <div className="fs-6 fw-semibold my-2 text-nowrap overflow-hidden" style={{ maxWidth: "100%", textOverflow: "ellipsis" }}>
-=======
             <div
               className="fs-6 fw-semibold my-2 text-nowrap overflow-hidden"
               style={{ maxWidth: "100%", textOverflow: "ellipsis" }}
             >
->>>>>>> 463abe6 (frontend additonals changes made)
               {props?.title}
             </div>
 
             <div className="card-text my-2">{props?.client}</div>
 
             <div className="card-text my-2">
-<<<<<<< HEAD
-              Start Date: <span className="_gray_light">{props?.startdate}</span>
-=======
               Start Date:{" "}
               <span className="_gray_light">{props?.startdate}</span>
->>>>>>> 463abe6 (frontend additonals changes made)
             </div>
 
             <div className="card-text">
@@ -167,37 +136,23 @@ const DashboardCard = (props) => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-<<<<<<< HEAD
-                <i className="bi bi-three-dots-vertical" style={{ fontSize: 27, color: "#B8BDC1" }}></i>
-=======
                 <i
                   className="bi bi-three-dots-vertical"
                   style={{ fontSize: 27, color: "#B8BDC1" }}
                 ></i>
->>>>>>> 463abe6 (frontend additonals changes made)
               </button>
 
               <ul className="dropdown-menu" style={menuStyles}>
                 <li>
-<<<<<<< HEAD
-                  <Link href="/sites/site-setting" className="dropdown-item link_hover" style={menuStylesLists}>
-=======
                   <Link
                     href="/sites/site-setting"
                     className="dropdown-item link_hover"
                     style={menuStylesLists}
                   >
->>>>>>> 463abe6 (frontend additonals changes made)
                     <i className="bi bi-pencil me-2"></i>Site Profile
                   </Link>
                 </li>
                 <li>
-<<<<<<< HEAD
-                  <Link className="dropdown-item link_hover" style={menuStylesLists} href="#">
-                    <i className="bi bi-copy me-2"></i>Duplicate Project
-                  </Link>
-                </li>
-=======
                   <a
                     href="/"
                     className="dropdown-item link_hover"
@@ -212,7 +167,6 @@ const DashboardCard = (props) => {
                     <i className="bi bi-copy me-2"></i>Duplicate Project
                   </Link>
                 </li> */}
->>>>>>> 463abe6 (frontend additonals changes made)
               </ul>
 
               <div
@@ -236,14 +190,10 @@ const DashboardCard = (props) => {
         {props.inviteAccepted === false && (
           <div className="row d-flex justify-content-between">
             <div className="col-5 mt-3">
-<<<<<<< HEAD
-              <button className="bg-success text-white rounded p-1" onClick={AcceptSite}>
-=======
               <button
                 className="bg-success text-white rounded p-1"
                 onClick={AcceptSite}
               >
->>>>>>> 463abe6 (frontend additonals changes made)
                 <small>Accept Site</small>
               </button>
             </div>
@@ -255,8 +205,6 @@ const DashboardCard = (props) => {
           </div>
         )}
       </div>
-<<<<<<< HEAD
-=======
 
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header>
@@ -272,7 +220,6 @@ const DashboardCard = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
->>>>>>> 463abe6 (frontend additonals changes made)
     </div>
   );
 };

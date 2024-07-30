@@ -32,10 +32,6 @@ const Sidebar = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <nav className="navbar navbar-dark sidebar sticky-top h-100">
-      <div className="container-fluid h-100 p-0">
-=======
     <nav
       className="gradient-background-side-navbar sidebar sticky-top h-100"
       style={{
@@ -48,7 +44,6 @@ const Sidebar = () => {
           background: "linear-gradient(-180deg, #2A3E4E ,  #479677 )",
         }}
       >
->>>>>>> 463abe6 (frontend additonals changes made)
         <div className="navbar-collapse h-100 d-flex flex-column justify-content-between">
           <Link href="/">
             <img src="/assets/images/sidelogo.png" width="50" alt="sidelogo" />
@@ -229,11 +224,6 @@ const Sidebar = () => {
               </div>
               
             </div> */}
-<<<<<<< HEAD
-            
-=======
-
->>>>>>> 463abe6 (frontend additonals changes made)
             <div className="nav-item dropdown" href="/stock/indents">
               <div className="">
                 <Link

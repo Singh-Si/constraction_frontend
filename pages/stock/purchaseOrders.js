@@ -7,18 +7,6 @@ import axios from "axios";
 import nookies from "nookies";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-<<<<<<< HEAD
-
-const PurchaseOrders = ({ poData }) => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    if (poData) {
-      const mappedProducts = poData.map((po, index) => ({
-        poId: `PO-2023-24-${po.poId}`,
-        indentId: `ID:MT-00${index + 1}`,
-        site: po.site?.name || "",
-=======
 import { getSiteAsync } from "@/store/createSite/GetSites";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "react-bootstrap";
@@ -111,7 +99,6 @@ const handleExportPDF = async()=>{
         poId: `PO-2023-24-${po.poId}`,
         indentId: `ID:MT-00${index + 1}`,
         site: po.site?.name || "NO DETAILS",
->>>>>>> 463abe6 (frontend additonals changes made)
         vendor: po.vendorId?.vendor?.vendorName || "",
         createdOn: po.createdAt?.split("T")[0] || "",
         createdBy: po.createdBy?.name || "",
@@ -119,13 +106,6 @@ const handleExportPDF = async()=>{
       }));
       setProducts(mappedProducts);
     }
-<<<<<<< HEAD
-  }, [poData]);
-
-  return (
-    <StocksLayout current="purchaseorders">
-      <div className="card">
-=======
   }, [poData , dispatch]);
 
   return (
@@ -154,7 +134,6 @@ const handleExportPDF = async()=>{
 
             </div>
       <div className="card" style={{marginTop : "3rem"}}>
->>>>>>> 463abe6 (frontend additonals changes made)
         <DataTable
           value={products}
           paginator
@@ -162,18 +141,6 @@ const handleExportPDF = async()=>{
           rowsPerPageOptions={[5, 10, 25, 50]}
           className="p-datatable-striped"
         >
-<<<<<<< HEAD
-          <Column field="poId" header="PO ID"  />
-          <Column field="indentId" header="Indent ID"  />
-          <Column field="site" header="Site"  />
-          <Column field="vendor" header="Vendor" />
-          <Column field="createdOn" header="Created On"  />
-          <Column field="createdBy" header="Created By"  />
-          <Column field="deliveryDate" header="Expected Delivery Date"  />
-        </DataTable>
-      </div>
-    </StocksLayout>
-=======
           <Column field="poId" header="PO ID" headerStyle={headerStyle} bodyStyle={bodyStyle} />
           <Column field="indentId" header="Indent ID" headerStyle={headerStyle} bodyStyle={bodyStyle}  />
           <Column field="site" header="Site"  headerStyle={headerStyle} bodyStyle={bodyStyle}  />
@@ -211,18 +178,13 @@ const handleExportPDF = async()=>{
             </Modal.Body>
           </Modal>
     </div>
->>>>>>> 463abe6 (frontend additonals changes made)
   );
 };
 
 export default PurchaseOrders;
 
 export async function getServerSideProps(context) {
-<<<<<<< HEAD
-  const { currentOrganizationId, siteId, token } = nookies.get(context);
-=======
   const { currentOrganizationId, token } = nookies.get(context);
->>>>>>> 463abe6 (frontend additonals changes made)
   let poData = null;
   try {
     const response = await axios.get(

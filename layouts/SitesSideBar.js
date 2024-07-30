@@ -8,11 +8,7 @@ const SitesSidebar = () => {
   const menuStylesLists = {
     backgroundColor: "white",
     color: "black",
-<<<<<<< HEAD
-  }
-=======
   };
->>>>>>> 463abe6 (frontend additonals changes made)
   const { siteId } = parseCookies();
   const handleLogout = () => {
     const cookies = parseCookies();
@@ -23,16 +19,12 @@ const SitesSidebar = () => {
     router.push("/");
   };
   return (
-<<<<<<< HEAD
-    <nav className="navbar navbar-dark sidebar sticky-top h-100">
-=======
     <nav
       className="navbar navbar-dark sidebar sticky-top h-100"
       style={{
         background: "linear-gradient(-180deg, #2A3E4E ,  #479677 )",
       }}
     >
->>>>>>> 463abe6 (frontend additonals changes made)
       <div className="container-fluid h-100 p-0">
         <div className="navbar-collapse h-100 d-flex flex-column justify-content-between">
           <Link href="/">
@@ -49,16 +41,6 @@ const SitesSidebar = () => {
               className="text-decoration-none text-white"
               href={`/sites/dashboard`}
             >
-<<<<<<< HEAD
-            <div
-              className="nav-item dropdown text-center text-center"
-              activeclassname="activeClicked"
-            >
-              
-             
-              <i className={`icons ti ti-layout-dashboard fs-3 ${pathname.startsWith('/sites/dashboard') ? 'active-background' : ''}`}></i>
-
-=======
               <div
                 className="nav-item dropdown text-center text-center"
                 activeclassname="activeClicked"
@@ -70,7 +52,6 @@ const SitesSidebar = () => {
                       : ""
                   }`}
                 ></i>
->>>>>>> 463abe6 (frontend additonals changes made)
 
                 {/* <i className={`icons ti ti-layout-dashboard fs-3 ${pathname == '/sites/dashboard' ? 'active-background' : ''}`}></i> */}
 
@@ -93,9 +74,6 @@ const SitesSidebar = () => {
                 className="nav-item dropdown text-center"
                 activeclassname="activeClicked"
               >
-<<<<<<< HEAD
-                <i className={`icons ti ti-list-details fs-3 ${pathname.startsWith('/sites/siteplan') ? 'active-background' : ''}`}></i>
-=======
                 <i
                   className={`icons ti ti-list-details fs-3 ${
                     pathname.startsWith("/sites/siteplan")
@@ -103,7 +81,6 @@ const SitesSidebar = () => {
                       : ""
                   }`}
                 ></i>
->>>>>>> 463abe6 (frontend additonals changes made)
                 {/* <img src="/assets/images/frame-3.png" alt="side_homeIcon" /> */}
                 <div className="text-light-gray  text-center">
                   <small>Plan</small>
@@ -122,9 +99,6 @@ const SitesSidebar = () => {
                 className="nav-item dropdown text-center"
                 activeclassname="activeClicked"
               >
-<<<<<<< HEAD
-                <i className={`icons ti ti-calendar fs-3 ${pathname.startsWith('/sites/attendance')  ? 'active-background' : ''}`}></i>
-=======
                 <i
                   className={`icons ti ti-calendar fs-3 ${
                     pathname.startsWith("/sites/attendance")
@@ -132,7 +106,6 @@ const SitesSidebar = () => {
                       : ""
                   }`}
                 ></i>
->>>>>>> 463abe6 (frontend additonals changes made)
                 {/* <img src="/assets/images/frame-4.png" alt="side_homeIcon" /> */}
                 <div className="text-light-gray text-center">
                   <small>Attendance</small>
@@ -150,9 +123,6 @@ const SitesSidebar = () => {
               href={`/sites/material/indent`}
             >
               <div className="nav-item dropdown text-center">
-<<<<<<< HEAD
-                <i className={`icons ti ti-building-warehouse fs-3 ${pathname.startsWith('/sites/material') ? 'active-background' : ''}`}></i>
-=======
                 <i
                   className={`icons ti ti-building-warehouse fs-3 ${
                     pathname.startsWith("/sites/material")
@@ -160,7 +130,6 @@ const SitesSidebar = () => {
                       : ""
                   }`}
                 ></i>
->>>>>>> 463abe6 (frontend additonals changes made)
                 {/* <img src="/assets/images/frame-5.png" alt="side_homeIcon" /> */}
                 <div className="text-light-gray  text-center">
                   <small>Indent</small>
@@ -179,9 +148,6 @@ const SitesSidebar = () => {
               href={`/sites/site-setting`}
             >
               <div className="nav-item dropdown text-center">
-<<<<<<< HEAD
-                <i className={`icons ti ti-settings-cog fs-3 ${pathname.startsWith('/sites/site-setting') ? 'active-background' : ''}`}></i>
-=======
                 <i
                   className={`icons ti ti-settings-cog fs-3 ${
                     pathname.startsWith("/sites/site-setting")
@@ -189,37 +155,17 @@ const SitesSidebar = () => {
                       : ""
                   }`}
                 ></i>
->>>>>>> 463abe6 (frontend additonals changes made)
                 {/* <img src="/assets/images/setting-icon.png" alt="side_homeIcon" /> */}
                 <div className="text-light-gray  text-center">
                   <small>Setting</small>
                 </div>
 
-<<<<<<< HEAD
-
-               
-=======
->>>>>>> 463abe6 (frontend additonals changes made)
                 {/* <ul className="dropdown-menu">
                 <li><Link className="dropdown-item" href={`/sites/site-setting`} >Setting</Link></li>
 
               </ul> */}
               </div>
             </Link>
-<<<<<<< HEAD
-             <Link 
-             className="text-decoration-none text-white"
-
-             href={`/siteissues`} >
-                            <div className="nav-item dropdown text-center">
-
-            <i className={`icons ti ti-alert-triangle fs-3 ${pathname === '/siteissues' ? 'active-background' : ''}`}></i>
-            </div>
-            <div className="text-light-gray text-center">
-                        <small>Site Issues</small>
-            </div>
-        </Link>
-=======
             <Link
               className="text-decoration-none text-white"
               href={`/siteissues`}
@@ -235,7 +181,6 @@ const SitesSidebar = () => {
                 <small>Site Issues</small>
               </div>
             </Link>
->>>>>>> 463abe6 (frontend additonals changes made)
             {/* <div className="nav-item dropdown text-center">
               <img src="/assets/images/stock.png" alt="side_homeIcon" />
               <div className='text-white text-center'><small >Stock</small></div>
@@ -261,8 +206,4 @@ const SitesSidebar = () => {
     </nav>
   );
 };
-<<<<<<< HEAD
 export default SitesSidebar;
-=======
-export default SitesSidebar;
->>>>>>> 463abe6 (frontend additonals changes made)

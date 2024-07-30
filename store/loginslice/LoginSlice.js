@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-    
-=======
->>>>>>> 463abe6 (frontend additonals changes made)
 import config from '@/config/config';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
