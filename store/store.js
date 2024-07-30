@@ -18,7 +18,11 @@ import UserPermisionSlice from "./UserPermisionSlice";
 import workSlice from "./organization-profile/work-category";
 import memberSlice from "./member/MemberSlice";
 import vendorSlice from "./vendor/getvendor";
+<<<<<<< HEAD
 import bomMaterialSlice from "./material/Bom";
+=======
+import bomMaterialSlice, { fetchMaterialBomAsync } from "./material/Bom";
+>>>>>>> 463abe6 (frontend additonals changes made)
 import gettodayAttendenceSlice from './attendence/getTodayAttendence'  
 import fetchlabourSlice from './Labourfetch/labourfetch'
 import IndentSlice from "./material/IndentSlice";

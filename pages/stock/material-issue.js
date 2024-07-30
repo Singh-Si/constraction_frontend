@@ -73,6 +73,10 @@ const MaterialIssue = () => {
     }, []);
 
     return (
+<<<<<<< HEAD
+=======
+        <div>
+>>>>>>> 463abe6 (frontend additonals changes made)
         <StocksLayout current="material">
             <div className='row bg-light-blue d-flex justify-content-end'>
                 <span className='text-blue fw-bold p-2'><BackIcon />Quality Issues</span>
@@ -136,6 +140,10 @@ const MaterialIssue = () => {
                 )}
             </div>
         </StocksLayout>
+<<<<<<< HEAD
+=======
+       </div>
+>>>>>>> 463abe6 (frontend additonals changes made)
     );
 };
 

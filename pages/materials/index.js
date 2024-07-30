@@ -7,7 +7,10 @@ import BomCreate from "@/components/sites/bom/BomCreate";
 import { fetchMaterialBomAsync } from "@/store/material/Bom";
 import StocksLayout from "@/layouts/StocksLayout";
 import SearchInput from "@/components/utils/SearchInput";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 463abe6 (frontend additonals changes made)
 const Materials = () => {
   const [clickedMaterial, setClickedMaterial] = useState(null);
   const [activeItemId, setActiveItemId] = useState(null);

@@ -24,6 +24,14 @@ const PurchaseOrder = (props) => {
     dispatch(fetchAllIndentAsync());
   }, [dispatch]);
 
+<<<<<<< HEAD
+=======
+  const bodyStyle = {
+    borderRight: "1px solid #ddd",
+    borderBottom: "1px solid #ddd",
+  };
+
+>>>>>>> 463abe6 (frontend additonals changes made)
   const fetchPurchaseOrders = async () => {
     try {
       const response = await axios.get(
@@ -60,9 +68,24 @@ const PurchaseOrder = (props) => {
   const paginatedData = materialData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
+<<<<<<< HEAD
     <MaterialLayout current="purchase">
       <div className='row-sm d-flex justify-content-end gap-2'>
         <div className='col-2 text-end'>
+=======
+    <div>
+         <div className="site-profile" style={{marginBottom :"1rem" }}>
+        <div className="site-profile-heading">
+          <span style={{ color: "#FFFFFF", opacity: "0.6" }}>
+            Sites /{" "}
+          </span>
+          <span style={{ color: "white", marginLeft: "0.2rem" }}>Purchase Order</span>
+        </div>
+        </div>
+    <MaterialLayout current="purchase">
+      <div className='row-sm d-flex justify-content-end gap-2'>
+        <div clasName='col-2 text-end'>
+>>>>>>> 463abe6 (frontend additonals changes made)
           {/* <button type="button" className="border-info border-2 text-info m-auto w-75 bg-white rounded px-0 py-1 btn btn-primary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-xl">
             <i className="bi bi-file-earmark-excel"></i> Export Excel
           </button>
@@ -79,6 +102,7 @@ const PurchaseOrder = (props) => {
           <li className="list-group-item list-group-item fw-bold bg-gray text-black">
             <div href="/member" className='text-decoration-none text-black'>
               <div className='row bg-light-gray'>
+<<<<<<< HEAD
                 <div className='border text-white bg-blue py-2 col-2 d-flex align-items-center px-2 m-0 gap-3'>
                   <small className='w-100 text-center'>PO-ID</small>
                 </div>
@@ -101,6 +125,30 @@ const PurchaseOrder = (props) => {
                   <small className='w-100 text-center'>Expected Delivery Date</small>
                 </div>
                 <div className='border col-2 text-center d-flex align-items-center px-2 m-0 gap-3'>
+=======
+                <div className='border text-white bg-blue py-2 col-2 d-flex align-items-center px-2 m-0 gap-3' style={{background : "rgba(42, 62, 78, 1)" , color : 'white'}}>
+                  <small className='w-100 text-center'>PO-ID</small>
+                </div>
+                <div className='border col-1 d-flex align-items-center px-2 m-0 gap-3'  style={{background : "rgba(42, 62, 78, 1)" , color : "white"}}>
+                  <small className='w-100 text-center'>Indent ID</small>
+                </div>
+                <div className='border col-2 d-flex align-items-center px-2 m-0 gap-3'  style={{background : "rgba(42, 62, 78, 1)" , color : "white"}}>
+                  <small className='w-100 text-center'>Created On</small>
+                </div>
+                <div className='border col-2 d-flex align-items-center px-2 m-0 gap-3'  style={{background : "rgba(42, 62, 78, 1)", color : "white"}}>
+                  <small className='w-100 text-center'>Created By</small>
+                </div>
+                <div className='border col-1 d-flex align-items-center px-2 m-0 gap-3'  style={{background : "rgba(42, 62, 78, 1)" , color : "white"}}>
+                  <small className='w-100 text-center'>Vendor</small>
+                </div>
+                <div className='border col-1 d-flex align-items-center px-2 m-0 gap-3'  style={{background : "rgba(42, 62, 78, 1)" , color : "white"}}>
+                  <small className='w-100 text-center'>Total value</small>
+                </div>
+                <div className='border col-1 text-center d-flex align-items-center px-2 m-0 gap-3'  style={{background : "rgba(42, 62, 78, 1)" , color : "white"}}>
+                  <small className='w-100 text-center'>Expected Delivery Date</small>
+                </div>
+                <div className='border col-2 text-center d-flex align-items-center px-2 m-0 gap-3'  style={{background : "rgba(42, 62, 78, 1)" , color : "white"}}>
+>>>>>>> 463abe6 (frontend additonals changes made)
                   <small className='w-100 text-center'>Delivery On</small>
                 </div>
               </div>
@@ -116,7 +164,11 @@ const PurchaseOrder = (props) => {
                   <div className="border p-3 col-1 d-flex align-items-center px-1 m-0 ">
                 <small className="w-100 text-center">
                   {material?.indentId?.map(indent => (
+<<<<<<< HEAD
                     <div key={indent.id._id}>{indent.id.indentId}</div>
+=======
+                    <div key={indent?.id?._id}>{indent?.id?.indentId}</div>
+>>>>>>> 463abe6 (frontend additonals changes made)
                   ))}
                 </small>
               </div>
@@ -158,6 +210,10 @@ const PurchaseOrder = (props) => {
         </nav>
       </div>
     </MaterialLayout>
+<<<<<<< HEAD
+=======
+    </div>
+>>>>>>> 463abe6 (frontend additonals changes made)
   );
 };
 

@@ -25,7 +25,11 @@ export const fetchMaterialBomAsync = createAsyncThunk("fetchMaterialBomAsync", a
 const bomMaterialSlice = createSlice({
     name: 'fetchMaterialBomAsync',
     initialState: {
+<<<<<<< HEAD
         userData: "",
+=======
+        userData: null,
+>>>>>>> 463abe6 (frontend additonals changes made)
         status: 'idle',
         error: null,
     },
