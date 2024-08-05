@@ -46,40 +46,21 @@ const Sidebar = () => {
       >
         <div className="navbar-collapse h-100 d-flex flex-column justify-content-between">
           <Link href="/">
-            <img src="/assets/images/sidelogo.png" width="50" alt="sidelogo" />
+            <img src="/assets/images/logo-company.png" width="50" alt="sidelogo" style={{marginTop :'1rem'}}/>
           </Link>
           <ul className="navbar-nav gap-0 align-items-evenly px-2">
             <div href="/organisationProfile" className="nav-item dropdown">
               <div className=" ">
                 <Link
                   href="/organisation/organisation-profile"
-                  className="text-decoration-none px-2 sidebar-icon"
+                  className="text-decoration-none px-2 "
                 >
-                  {/* <i className={`icons ti ti-building-community ${pathname=='/organisation/organisation-profile' ? 'active-background' : ''} `}></i> */}
-                  <i
-                    className={`icons ti ti-building-community ${
-                      pathname.startsWith("/organisation")
-                        ? "active-background"
-                        : ""
-                    }`}
-                  ></i>
-
-                  {/* <img src="/assets/images/side_homeIcon.png" alt="side_homeIcon" /> */}
-                  <div className="text-light-gray text-center">
+                  <i class="bi bi-buildings-fill" style={{color : 'white' , textAlign : 'center' , fontSize :'1.8rem' , marginLeft : '1rem'}}></i>
+                  <div className="text-light-gray text-center" >
                     <small>ORG</small>
                   </div>
                 </Link>
               </div>
-              {/* <ul className="dropdown-menu">
-                <li>
-                  <Link
-                    className="dropdown-item text-decoration-none "
-                    href="/organisation/organisation-profile"
-                  >
-                    Organisation Profile
-                  </Link>
-                </li>
-              </ul> */}
             </div>
 
             <div className="nav-item dropdown" activeclassname="activeClicked">
@@ -88,11 +69,7 @@ const Sidebar = () => {
                   href="/member"
                   className="text-decoration-none px-2 sidebar-icon"
                 >
-                  <i
-                    className={`icons ti ti-users-group ${
-                      pathname.startsWith("/member") ? "active-background" : ""
-                    }`}
-                  ></i>
+                  <i class="bi bi-people-fill" style={{color : 'white' , textAlign : 'center' , fontSize :'1.8rem' , marginLeft : '1rem'}}></i> 
                   {/* <img src="/assets/images/side_analyticsIcon.png" pathname alt="side_homeIcon" /> */}
                   <div className="text-light-gray text-center">
                     <small>Member</small>
@@ -118,13 +95,7 @@ const Sidebar = () => {
                   href="/role-and-permission"
                   className="text-decoration-none px-2 sidebar-icon"
                 >
-                  <i
-                    className={`icons ti ti-user-cog ${
-                      pathname.startsWith("/role-and-permission")
-                        ? "active-background"
-                        : ""
-                    }`}
-                  ></i>
+                <i class="bi bi-person-fill-check" style={{color : 'white' , textAlign : 'center' , fontSize :'1.8rem' , marginLeft : '1rem'}}></i> 
                   {/* <img src="/assets/images/side_icon3.png" alt="side_homeIcon" /> */}
                   <div className="text-light-gray text-center">
                     <small>Roles</small>
@@ -149,13 +120,7 @@ const Sidebar = () => {
                   href="/all-bills"
                   className="text-decoration-none px-2 sidebar-icon"
                 >
-                  <i
-                    className={`icons ti ti-receipt-2 ${
-                      pathname.startsWith("/all-bills")
-                        ? "active-background"
-                        : ""
-                    }`}
-                  ></i>
+                 <i class="bi bi-wallet2" style={{color : 'white' , textAlign : 'center' , fontSize :'1.8rem' , marginLeft : '1rem'}}></i>
                   {/* <Image
                     src="/assets/images/bill_icon.svg"
                     alt="side_homeIcon"
@@ -181,11 +146,7 @@ const Sidebar = () => {
                   href="/Vendor"
                   className="text-decoration-none px-2 sidebar-icon"
                 >
-                  <i
-                    className={`icons ti ti-building-store ${
-                      pathname.startsWith("/Vendor") ? "active-background" : ""
-                    }`}
-                  ></i>
+                 <i class="bi bi-shop" style={{color : 'white' , textAlign : 'center' , fontSize :'1.8rem' , marginLeft : '1rem'}}></i>
                   {/* <img
                     src="/assets/images/vender_icon.svg"
                     alt="side_homeIcon"
@@ -230,10 +191,9 @@ const Sidebar = () => {
                   href="/stock/indents"
                   className="text-decoration-none px-2 sidebar-icon"
                 >
-                  <i
-                    className={`icons ti ti-keyframe-filled ${
-                      pathname.startsWith("/stock") ? "active-background" : ""
-                    }`}
+                  <i 
+                  class="bi bi-gear-fill"
+                    style={{color : 'white' , textAlign : 'center' , fontSize :'1.8rem' , marginLeft : '1rem'}}
                   ></i>
 
                   <div className="text-light-gray text-center">

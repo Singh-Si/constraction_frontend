@@ -43,7 +43,9 @@ const MemberBySite = () => {
     async function fetchMembers() {
 
       const response = await dispatch(fetchmemberBySite());
-      setSiteMembers(response?.payload?.siteMembers)
+      if(response){
+        setSiteMembers(response?.payload?.siteMembers)
+      }
     }
     fetchMembers()
 

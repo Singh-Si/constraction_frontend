@@ -74,11 +74,14 @@ const MaterialIssue = () => {
 
     return (
         <div>
+            <div className="site-profile-heading">
+          <span style={{ color: "#FFFFFF", opacity: "0.6" }}>
+            Commercial /{" "}
+          </span>
+          <span style={{ color: "white", marginLeft: "0.2rem" ,  marginTop : '1rem'  }}>Quality Issues</span>
+         
+          </div>
         <StocksLayout current="material">
-            <div className='row bg-light-blue d-flex justify-content-end'>
-                <span className='text-blue fw-bold p-2'><BackIcon />Quality Issues</span>
-            </div>
-
             <div className="row mt-4">
                 <div className="col-3 mb-3">
                     <div className="input-group d-flex align-items-center">
@@ -104,10 +107,10 @@ const MaterialIssue = () => {
                 </div>
             </div>
 
-            <small className='fw-bold mt-4'>All Created Issues ID</small>
+            <small className='fw-bold mt-4 '>All Created Issues ID</small>
             <div className="row border-top border-bottom-0">
-                <div className="col-lg-3 dz-scroll height500 border border-right border-2 border-solid border-grey p-3">
-                    <div className="nav flex-column nav-pills mb-3 mtngtabs mting">
+                <div className="col-lg-3 dz-scroll height600 border border-right border-2 border-solid border-grey p-3">
+                    <div className="nav flex-column nav-pills mb-3 mtngtabs mting ">
                         {materialIssues.map((issue, index) => (
                             <Link 
                                 key={issue._id} 

@@ -9,6 +9,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { parseCookies } from "nookies";
 import { SitevalidationSchema } from "@/schemas/createOrgSchema";
 import config from "@/config/config";
+import { Button } from "@chakra-ui/react";
 import BackIcon from "@/components/utils/global/BackIcon";
 
 const OrganisationProfile = (props) => {
@@ -171,13 +172,18 @@ const OrganisationProfile = (props) => {
   return (
     <>
       <div className="row">
-        <div className="col-12 mb-3 bg-light-info text-blue fw-bolder p-2">
-          <BackIcon />
+      <div className="site-profile">
+        <div className="site-profile-heading">
+          <span style={{ color: "#FFFFFF", opacity: "0.6" }}>
+          </span>
+          <span style={{ color: "white", marginLeft: "0.2rem" }}>Organization Profile</span>
+        </div>
 
-          <span>Organization Profile</span>
+        <div style={{marginTop : '2rem' , marginLeft : "1rem" , color : 'rgba(64, 87, 104, 1)'}}>
+          Organization Overview
         </div>
       </div>
-
+      </div>
       <div className="row">
         <div className="col-12">
           <div className="tab-content">
@@ -196,7 +202,7 @@ const OrganisationProfile = (props) => {
                 >
                   {({ values, setFieldValue, resetForm, isSubmitting }) => {
                     return (
-                      <Form>
+                      <Form style={{backgroundColor : "rgba(227, 244, 255, 1)"}}>
                         <div className="row ms-4">
                           <div className="col-2">
                             <div className="col-2">
@@ -295,8 +301,8 @@ const OrganisationProfile = (props) => {
                                     </span>
                                   </div>
                                 </span>
-                                <div className="mb-4">
-                                  <div className="col-6">
+                                <div className="mb-1">
+                                  <div className="col-8">
                                     <label className="form-label text-org-profile-label-text">
                                       Organization Name
                                     </label>
@@ -318,7 +324,7 @@ const OrganisationProfile = (props) => {
                                     />
                                   ) : (
                                     <div className="fw-semibold">
-                                      <small className="form-control className=">
+                                      <small className="email-display-container">
                                         {props?.parsedData
                                           ? props.parsedData.name
                                           : "N/A"}
@@ -338,9 +344,9 @@ const OrganisationProfile = (props) => {
                               </div>
                             </div>
 
-                            <div className="row">
-                              <div className="col-12">
-                                <div className="mb-4">
+                            <div className="row" >
+                              <div className="col-2">
+                                <div className="mb-1">
                                   <label className="form-label  text-org-profile-label-text">
                                     Address Details
                                   </label>
@@ -364,7 +370,7 @@ const OrganisationProfile = (props) => {
                                       }}
                                     />
                                   ) : (
-                                    <div className="fw-semibold form-control className=">
+                                    <div className="email-display-container">
                                       {props?.parsedData?.address || "N/A"}
                                     </div>
                                   )}
@@ -383,7 +389,7 @@ const OrganisationProfile = (props) => {
 
                             <div className="row">
                               <div className="col-4">
-                                <div className="mb-4">
+                                <div className="mb-1">
                                   <label className="form-label  text-org-profile-label-text">
                                     City
                                   </label>
@@ -404,7 +410,7 @@ const OrganisationProfile = (props) => {
                                       }}
                                     />
                                   ) : (
-                                    <div className="fw-semibold form-control className=">
+                                    <div className="email-display-container">
                                       {props?.parsedData?.city || "N/A"}
                                     </div>
                                   )}
@@ -421,7 +427,7 @@ const OrganisationProfile = (props) => {
                               </div>
 
                               <div className="col-4">
-                                <div className="mb-4">
+                                <div className="mb-1">
                                   <label className="form-label  text-org-profile-label-text">
                                     State
                                   </label>
@@ -442,7 +448,7 @@ const OrganisationProfile = (props) => {
                                       }}
                                     />
                                   ) : (
-                                    <div className="fw-semibold form-control className=">
+                                    <div className="email-display-container">
                                       {props?.parsedData?.state || "N/A"}
                                     </div>
                                   )}
@@ -458,8 +464,8 @@ const OrganisationProfile = (props) => {
                                 </div>
                               </div>
 
-                              <div className="col-4">
-                                <div className="mb-4">
+                              <div className=" col-4">
+                                <div className="mb-1">
                                   <label className="form-label  text-org-profile-label-text">
                                     PIN Code
                                   </label>
@@ -483,7 +489,7 @@ const OrganisationProfile = (props) => {
                                       }}
                                     />
                                   ) : (
-                                    <div className="fw-semibold form-control className=">
+                                    <div className="email-display-container">
                                       {props?.parsedData?.pin_code || "N/A"}
                                     </div>
                                   )}
@@ -524,8 +530,8 @@ const OrganisationProfile = (props) => {
                                       // }}
                                     />
                                   ) : (
-                                    <div className="fw-semibold form-control className=">
-                                      {props?.parsedData?.gst_number}
+                                    <div className="email-display-container">
+                                      {props?.parsedData?.gst_number || 'N/A'}
                                     </div>
                                   )}
 
@@ -550,20 +556,10 @@ const OrganisationProfile = (props) => {
                                       type="text"
                                       placeholder="Enter PAN Number"
                                       className="form-control"
-                                      // maxLength={10}
-
-                                      // onChange={(e) => {
-                                      //   // Allow only numbers
-                                      //   const phoneNumber = e.target.value.replace(/[^0-9]/g, '');
-
-                                      //   // Set the value in Formik and also in your local state if needed
-                                      //   setFieldValue("phone", phoneNumber);
-                                      //   setEditedData({ ...editedData, phone: phoneNumber });
-                                      // }}
                                     />
                                   ) : (
-                                    <div className="fw-semibold form-control className=">
-                                      {props?.parsedData?.pan_number}
+                                    <div className="email-display-container">
+                                      {props?.parsedData?.pan_number || 'N/A'}
                                     </div>
                                   )}
 
@@ -588,20 +584,10 @@ const OrganisationProfile = (props) => {
                                       type="text"
                                       placeholder="Enter TAN  Number"
                                       className="form-control"
-                                      // maxLength={10}
-
-                                      // onChange={(e) => {
-                                      //   // Allow only numbers
-                                      //   const phoneNumber = e.target.value.replace(/[^0-9]/g, '');
-
-                                      //   // Set the value in Formik and also in your local state if needed
-                                      //   setFieldValue("phone", phoneNumber);
-                                      //   setEditedData({ ...editedData, phone: phoneNumber });
-                                      // }}
                                     />
                                   ) : (
-                                    <div className="fw-semibold form-control className=">
-                                      {props?.parsedData?.tan}
+                                    <div className="email-display-container">
+                                      {props?.parsedData?.tan || 'N/A'}
                                     </div>
                                   )}
 
@@ -616,7 +602,7 @@ const OrganisationProfile = (props) => {
                                 </div>
                               </div>
 
-                              <div className="row mt-3">
+                              <div className="row mt-1">
                                 <div className="col-4">
                                   <div className="form-group">
                                     <label className="form-label  text-org-profile-label-text">
@@ -631,17 +617,9 @@ const OrganisationProfile = (props) => {
                                         // maxLength={10}
                                         disabled
                                         readOnly
-                                        // onChange={(e) => {
-                                        //   // Allow only numbers
-                                        //   const phoneNumber = e.target.value.replace(/[^0-9]/g, '');
-
-                                        //   // Set the value in Formik and also in your local state if needed
-                                        //   setFieldValue("phone", phoneNumber);
-                                        //   setEditedData({ ...editedData, phone: phoneNumber });
-                                        // }}
                                       />
                                     ) : (
-                                      <div className="fw-semibold form-control className=">
+                                      <div className="email-display-container">
                                         {props?.parsedData?.phone}
                                       </div>
                                     )}
@@ -662,27 +640,25 @@ const OrganisationProfile = (props) => {
                                     Email ID
                                   </label>
                                   <span className="text-danger">*</span>
-
                                   {isInputField ? (
-                                    <Field
-                                      name="email"
-                                      placeholder="Enter your email"
-                                      type="email"
-                                      className="form-control "
-                                      onChange={(e) => {
-                                        setFieldValue("email", e.target.value);
-                                        setEditedData({
-                                          ...editedData,
-                                          email: e.target.value,
-                                        });
-                                      }}
-                                    />
-                                  ) : (
-                                    <div className="fw-semibold form-control className=">
-                                      {props?.parsedData?.email || "N/A"}
-                                    </div>
-                                  )}
-
+    <Field
+      name="email"
+      placeholder="Enter your email"
+      type="email"
+      className="form-control"
+      onChange={(e) => {
+        setFieldValue("email", e.target.value);
+        setEditedData({
+          ...editedData,
+          email: e.target.value,
+        });
+      }}
+    />
+  ) : (
+    <div className="email-display-container">
+      {props?.parsedData?.email || "N/A"}
+    </div>
+  )}
                                   <ErrorMessage
                                     name="email"
                                     render={(msg) => (
@@ -693,79 +669,149 @@ const OrganisationProfile = (props) => {
                                   />
                                 </div>
                               </div>
-                              {!isInputField && (
-                                <div className="row mt-5">
-                                  <div className="text-sm-end col-4">
-                                    <div className="border w-100  text-center d-flex p-2 gap-4 rounded">
-                                      <div className="border-info border p-2 rounded">
-                                        <Image
-                                          src="/assets/images/approvalimg.png"
-                                          width={30}
-                                          height={30}
-                                          alt="approvalimg"
-                                        />
-                                      </div>
-                                      <div className="text-center d-flex align-items-center">
-                                        <Link
-                                          href="/organisation/approval-setting"
-                                          className="text-decoration-none text-blue"
-                                        >
-                                          Approval Setting
-                                        </Link>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="text-sm-end col-4 ">
-                                    <div className="border w-100  text-center d-flex p-2 gap-4 rounded">
-                                      <div className="border-info border p-2 rounded">
-                                        <Image
-                                          src="/assets/images/autodpr.png"
-                                          alt="autodpr_png"
-                                          width={30}
-                                          height={30}
-                                        />
-                                      </div>
-                                      <div className="text-center d-flex align-items-center">
-                                        <Link
-                                          href="/organisation/auto-dpr"
-                                          className="text-decoration-none text-blue"
-                                        >
-                                          Auto DPR
-                                        </Link>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div className="text-sm-end col-4">
-                                    <div className="border w-100  text-center d-flex p-2 gap-4 rounded">
-                                      <div className="border-info border p-2 rounded">
-                                        <Image
-                                          src="/assets/images/work-category.png"
-                                          alt="autodpr_png"
-                                          width={30}
-                                          height={30}
-                                        />
-                                      </div>
-                                      <div className="text-center d-flex align-items-center">
-                                        <Link
-                                          href="/organisation/work-category"
-                                          className="text-decoration-none text-blue"
-                                        >
-                                          Work Category
-                                        </Link>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              )}
-                            </div>
+                             </div>
                           </div>
                         </div>
                       </Form>
+                      
                     );
                   }}
                 </Formik>
+                <div className="col-4">
+          <Link
+            href="/sites/purchase-order"
+            className="text-decoration-none text-black"
+          >
+            <div className="h-75 border-black d-flex p-4 gap-3 site-border-design mt-4">
+              <div className="d-flex flex-direction-column align-items-center">
+                <Image
+                  src="/assets/images/user-tag.png"
+                  alt="members-icon"
+                  width={40}
+                  height={40}
+                />
+              </div>
+
+              <div className="d-flex flex-column justify-content-center">
+                <span className="fw-bold">Work Categories </span>
+                <small className="text-darkgrey ">Add and manage tags for this org</small>
+              </div>
+            </div>
+          </Link>
+        </div>
+                <div className="col-4">
+          <Link
+            href="/sites/purchase-order"
+            className="text-decoration-none text-black"
+          >
+            <div className="h-75 border-black d-flex p-4 gap-3 site-border-design mt-4">
+              <div className="d-flex flex-direction-column align-items-center">
+                <Image
+                  src="/assets/images/user-tag.png"
+                  alt="members-icon"
+                  width={40}
+                  height={40}
+                />
+              </div>
+
+              <div className="d-flex flex-column justify-content-center">
+                <span className="fw-bold">Address Details </span>
+                <small className="text-darkgrey ">Add and manage address details for this organisation</small>
+              </div>
+            </div>
+          </Link>
+        </div>
+                <div className="col-4">
+          <Link
+            href="/sites/purchase-order"
+            className="text-decoration-none text-black"
+          >
+            <div className="h-75 border-black d-flex p-4 gap-3 site-border-design mt-4">
+              <div className="d-flex flex-direction-column align-items-center">
+                <Image
+                  src="/assets/images/user-tag.png"
+                  alt="members-icon"
+                  width={40}
+                  height={40}
+                />
+              </div>
+
+              <div className="d-flex flex-column justify-content-center">
+                <span className="fw-bold">Approval Setting </span>
+                <small className="text-darkgrey ">All Modules</small>
+              </div>
+            </div>
+          </Link>
+        </div>
+                <div className="col-4">
+          <Link
+            href="/sites/purchase-order"
+            className="text-decoration-none text-black"
+          >
+            <div className="h-75 border-black d-flex p-4 gap-3 site-border-design">
+              <div className="d-flex flex-direction-column align-items-center">
+                <Image
+                  src="/assets/images/user-tag.png"
+                  alt="members-icon"
+                  width={40}
+                  height={40}
+                />
+              </div>
+
+              <div className="d-flex flex-column justify-content-center">
+                <span className="fw-bold">Auto DPR </span>
+                <small className="text-darkgrey ">
+Easily control how you receive your daily progress updates.
+</small>
+              </div>
+            </div>
+          </Link>
+        </div>
+                <div className="col-4">
+          <Link
+            href="/sites/purchase-order"
+            className="text-decoration-none text-black"
+          >
+            <div className="h-75 border-black d-flex p-4 gap-3 site-border-design">
+              <div className="d-flex flex-direction-column align-items-center">
+                <Image
+                  src="/assets/images/user-tag.png"
+                  alt="members-icon"
+                  width={40}
+                  height={40}
+                />
+              </div>
+
+              <div className="d-flex flex-column justify-content-center">
+                <span className="fw-bold">Material Categories </span>
+                <small className="text-darkgrey ">Add and manage material categories for this org.
+                </small>
+              </div>
+            </div>
+          </Link>
+        </div>
+                <div className="col-4">
+          <Link
+            href="/sites/purchase-order"
+            className="text-decoration-none text-black"
+          >
+            <div className="h-75 border-black d-flex p-4 gap-3 site-border-design">
+              <div className="d-flex flex-direction-column align-items-center">
+                <Image
+                  src="/assets/images/user-tag.png"
+                  alt="members-icon"
+                  width={40}
+                  height={40}
+                />
+              </div>
+
+              <div className="d-flex flex-column justify-content-center">
+                <span className="fw-bold">Material Issued </span>
+                <small className="text-darkgrey ">Add and manage Material</small>
+              </div>
+            </div>
+          </Link>
+        </div>
               </div>
             </div>
           </div>

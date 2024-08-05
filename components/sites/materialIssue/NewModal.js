@@ -11,13 +11,13 @@ import { toast } from "react-toastify";
 import config from "@/config/config";
 import { parseCookies } from "nookies";
 
-const MaterialNewIssue = () => {
+const SlideInModal= () => {
   const dispatch = useDispatch();
   const [siteDetails, setSiteDetails] = useState([]);
   const [members, setMembers] = useState([]);
   const [materials, setMaterials] = useState([]);
   const [formData, setFormData] = useState({
-    issued_name: '',
+    issued_name: 'Subcontractor',
     sub_category: '',
     site: '',
     materialName: '',
@@ -33,9 +33,6 @@ const MaterialNewIssue = () => {
   const siteData = useSelector((state) => state.getSiteAsync);
   const member = useSelector((state) => state.getAllmember);
 
-  const handleAddAnotherMaterial = ()=>{
-    con
-  }
 
   const validationSchema = Yup.object({
     issued_name: Yup.string().required('Material Issued To is required'),
@@ -148,6 +145,7 @@ const MaterialNewIssue = () => {
   };
 
   return (
+  
     <div>
       <div className="offcanvas offcanvas-end bg-white" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" data-bs-backdrop="static" style={{ width: '35%' }}>
         <div className="offcanvas-body p-0">
@@ -412,7 +410,9 @@ const MaterialNewIssue = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 
-export default MaterialNewIssue;
+
+export default SlideInModal;

@@ -6,11 +6,11 @@ import { useRouter } from "next/router";
 import config from "@/config/config";
 import nookies, { parseCookies } from "nookies";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-
+import { Modal, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
-import { Button, ButtonGroup, Input } from "@chakra-ui/react";
+
 
 const SiteSetting = ({ siteSettingData, siteId, imageData }) => {
   const [data, setData] = useState(siteSettingData);
@@ -19,14 +19,17 @@ const SiteSetting = ({ siteSettingData, siteId, imageData }) => {
   const [isImageChanged, setIsImageChanged] = useState(false);
   const [uploadImage, setUploadImage] = useState(null);
   const [editedPage, setEditedPage] = useState(false);
+  const [id , setId] = useState("" )
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
-    name: data.name,
+    name: data?.name,
     address: "",
     state: "",
     sitePoc: "",
     projectPoc: "",
   });
 
+  const router = useRouter();
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -35,9 +38,61 @@ const SiteSetting = ({ siteSettingData, siteId, imageData }) => {
     });
   };
 
+
+
   const handleDeleteImage = (e) => {
-    console.log(`image deleted`);
+    let configDelete = {
+      method: 'delete',
+      maxBodyLength: Infinity,
+      url: `https://construction-backend.onrender.com/site/deleteSideDoccumnet?organization=${currentOrganizationId}&site=${siteId}&id=${e}`,
+      headers: { 
+        'Authorization': `Bearer ${token}`
+      }
+    };
+    axios.request(configDelete)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+      router.push("/sites/site-setting")
+      toast.success('IMAGE DELETED SUCCESSFULLY' , {
+        position : "bottom-right"
+      })
+
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error('Something went wrong . Please try again later.' , {
+        position : "bottom-right"
+      })
+    });
   };
+
+
+  const confirmDelete = () => {
+    let config = {
+      method: "delete",
+      maxBodyLength: Infinity,
+      url: `https://construction-backend.onrender.com/site/delete?organization=${currentOrganizationId}&site=${siteId}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        if (response.data.success == true) {
+          toast.success("SITE DELETED SUCCESSFULLY", {
+            position: "top-center",
+          });
+          router.push('/')
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  };
+
 
   const [editedData, setEditedData] = useState({
     sitename: data?.name,
@@ -45,11 +100,15 @@ const SiteSetting = ({ siteSettingData, siteId, imageData }) => {
     enddate: data?.endDate,
   });
 
+  const handleDeleteSite = (e) => {
+    e.preventDefault();
+    setShowModal(true);
+  };
+  const handleClose = () => setShowModal(false);
   const { currentOrganizationId, token } = parseCookies();
   const { organizations } = useSelector(
     (state) => state?.getOrganizationAsync?.userData
   );
-  const router = useRouter();
 
   const matchOrganization =
     organizations &&
@@ -135,13 +194,16 @@ const SiteSetting = ({ siteSettingData, siteId, imageData }) => {
     const updatedData = response?.data;
 
     if (updatedData.success) {
-      toast.success(updatedData.message, { position: "top-center" });
+      
       router.push(router.asPath);
+      toast.success(updatedData.message, { position: "bottom-right" });
     }
   };
 
   useEffect(() => {
     console.log(data);
+    console.log("IMAGE DATA : " , imageData )
+
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -182,10 +244,10 @@ const SiteSetting = ({ siteSettingData, siteId, imageData }) => {
       const data = await response.json();
       console.log(data);
       if (data.success === true) {
+        router.push("/sites/site-setting");
         toast.success("Image Uploaded Successfully", {
           position: "top-center",
         });
-        router.push("/sites/site-setting");
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -397,7 +459,7 @@ const SiteSetting = ({ siteSettingData, siteId, imageData }) => {
         className="row"
         style={{
           height: "120px",
-          marginTop: "1rem",
+          marginTop: "2rem",
           width: "1000px",
           marginLeft: "9rem",
         }}
@@ -505,6 +567,7 @@ const SiteSetting = ({ siteSettingData, siteId, imageData }) => {
             .reverse()
             .map((sites, index) => {
               let siteImage = sites.file;
+              let imageId = sites.id
               return (
                 <div
                   key={index}
@@ -516,6 +579,7 @@ const SiteSetting = ({ siteSettingData, siteId, imageData }) => {
                 >
                   <img
                     src={siteImage}
+                    value={imageId}
                     alt="site-image"
                     style={{
                       width: "300px",
@@ -530,7 +594,10 @@ const SiteSetting = ({ siteSettingData, siteId, imageData }) => {
                       cursor: "pointer",
                     }}
                     onClick={() => {
-                      handleDeleteImage(index);
+                      
+                     
+                      handleDeleteImage(imageId);
+                      
                     }}
                   >
                     <img
@@ -542,8 +609,39 @@ const SiteSetting = ({ siteSettingData, siteId, imageData }) => {
                 </div>
               );
             })}
+               <div style={{width :'100%' , backgroundColor : 'rgba(227, 244, 255, 1)' , padding : '0.1rem 1rem' , marginTop : '2rem' , display : 'flex', justifyContent : 'space-between' , borderRadius : '10px'}}>
+  
+      <p style={{marginTop : '1rem'}}>    DELETE THIS SITE<br/>
+       <p style={{color :'rgba(0, 0, 0, 0.5)'}}>  Deleting this project means permanently deleting all its data and cannot be undone .</p>
+        </p>
+      <br /> 
+ 
+      <div>
+   
+      </div>
+      <div >
+      <Button colorScheme="red" size="lg" className="button-site" style={{backgroundColor : 'red' , height : "3rem" , marginTop :"1.1rem"}}>
+      <span className="icon"><i className="bi bi-exclamation-triangle" style={{marginRight : '1rem' , marginTop : '0.1rem'}}></i></span>
+      <p className="text-site" onClick={handleDeleteSite}>Delete Site</p>
+    </Button>
+      </div>
+    </div>
         </div>
       </div>
+      <Modal show={showModal} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Confirm Deletion</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this site?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            No
+          </Button>
+          <Button variant="danger" onClick={confirmDelete}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
@@ -566,8 +664,10 @@ export async function getServerSideProps(context) {
         },
       }
     );
-
-    siteSettingData = siteResponse.data.site;
+    if(siteResponse){
+      siteSettingData = siteResponse?.data?.site;
+    }
+   
   } catch (error) {
     console.error("Error fetching site settings:", error.message);
   }
@@ -594,6 +694,7 @@ export async function getServerSideProps(context) {
       siteSettingData,
       siteId,
       imageData,
+
     },
   };
 }

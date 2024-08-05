@@ -11,6 +11,7 @@
     "email-export": "email export"
   },
   "dependencies": {
+    "@chakra-ui/modal": "^2.3.1",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
@@ -30,15 +31,7 @@
     "bootstrap-icons": "^1.11.3",
     "form-data": "^4.0.0",
     "formik": "^2.4.5",
-    "frappe-gantt": "^0.6.1",
-    "gantt-task-react": "^0.3.9",
-    "install": "^0.13.0",
-    "moment": "^2.30.1",
-    "next": "^14.1.4",
-    "node-sass": "^9.0.0",
-    "nookies": "^2.5.2",
-    "npm": "^10.5.0",
-    "framer-motion": "^11.3.2",
+    "framer-motion": "^11.3.19",
     "frappe-gantt": "^0.6.1",
     "gantt-task-react": "^0.3.9",
     "html2canvas": "^1.4.1",
@@ -46,6 +39,7 @@
     "jspdf": "^2.5.1",
     "moment": "^2.30.1",
     "next": "^14.1.4",
+    "node-sass": "^9.0.0",
     "nookies": "^2.5.2",
     "npm": "^10.5.0",
     "pdf-lib": "^1.17.1",
@@ -53,12 +47,12 @@
     "primeicons": "^6.0.1",
     "primereact": "^10.6.3",
     "rc-progress": "^3.5.1",
-    "react": "^18",
+    "react": "18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-bootstrap": "^2.9.2",
     "react-data-table-component": "^7.6.1",
     "react-data-table-component-extensions": "^1.6.0",
-    "react-dom": "^18",
+    "react-dom": "18.2.0",
     "react-email": "^1.10.1",
     "react-icons": "^5.2.1",
     "react-modal": "^3.16.1",
@@ -67,18 +61,13 @@
     "react-select": "^5.8.0",
     "react-toastify": "^9.1.3",
     "reactstrap": "^9.2.1",
-    "sass": "^1.69.7",
     "sass": "^1.77.8",
     "sharp": "^0.33.1",
-    "yup": "^1.3.3" , 
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@chakra-ui/react": "^2.8.2",
-    "@react-email/components": "^0.0.12"
-
+    "yup": "^1.3.3"
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "14.0.4"
+    "eslint-config-next": "14.0.4",
+    "@babel/plugin-proposal-private-property-in-object": "^7.22.5"
   }
 }
