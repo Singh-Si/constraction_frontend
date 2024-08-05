@@ -28,7 +28,7 @@ const SitesSidebar = () => {
       <div className="container-fluid h-100 p-0">
         <div className="navbar-collapse h-100 d-flex flex-column justify-content-between">
           <Link href="/">
-            <img src="/assets/images/sidelogo.png" width="50" alt="" />
+            <img src="/assets/images/logo-company.png" width="50" alt="" />
           </Link>
           <ul className="navbar-nav">
             {/* <div exact href="/organisationProfile" className="nav-item dropdown text-center">
@@ -45,13 +45,7 @@ const SitesSidebar = () => {
                 className="nav-item dropdown text-center text-center"
                 activeclassname="activeClicked"
               >
-                <i
-                  className={`icons ti ti-layout-dashboard fs-3 ${
-                    pathname.startsWith("/sites/dashboard")
-                      ? "active-background"
-                      : ""
-                  }`}
-                ></i>
+                <i class="bi bi-window-sidebar"  style={{color : 'white' , textAlign : 'center' , fontSize :'1.8rem' , marginLeft : '0rem'}}></i>
 
                 {/* <i className={`icons ti ti-layout-dashboard fs-3 ${pathname == '/sites/dashboard' ? 'active-background' : ''}`}></i> */}
 
@@ -74,13 +68,7 @@ const SitesSidebar = () => {
                 className="nav-item dropdown text-center"
                 activeclassname="activeClicked"
               >
-                <i
-                  className={`icons ti ti-list-details fs-3 ${
-                    pathname.startsWith("/sites/siteplan")
-                      ? "active-background"
-                      : ""
-                  }`}
-                ></i>
+                <i class="bi bi-bar-chart-steps" style={{color : 'white' , textAlign : 'center' , fontSize :'1.8rem' , marginLeft : '0rem'}}></i>
                 {/* <img src="/assets/images/frame-3.png" alt="side_homeIcon" /> */}
                 <div className="text-light-gray  text-center">
                   <small>Plan</small>

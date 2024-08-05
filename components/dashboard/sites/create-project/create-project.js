@@ -31,11 +31,8 @@ const CreateProject = () => {
 
   const dispatch = useDispatch(); // Redux dispatch hook
   const { userData } = useSelector((state) => state?.getOrganizationAsync); // Select user data from Redux store
-  const { members } = useSelector(
-    (state) => state?.getAllmember?.allMemberData
-  ); // Select all members from Redux store
-
-  // Initial form values
+  const allMemberData = useSelector(state => state?.getAllmember?.allMemberData);
+  const members = allMemberData ? allMemberData.members : undefined;
 
   const handleSitePocChange = (event) => {
     setSelectedSitePoc(event.target.value);
@@ -354,12 +351,6 @@ const CreateProject = () => {
                         placeholder="Enter Address Line"
                         onBlur={handleBlur}
                         onChange={handleAddressChange}
-                      />
-                      <ErrorMessage
-                        name="address"
-                        render={(msg) => (
-                          <small style={{ color: "red" }}>{msg}</small>
-                        )}
                       />
                     </div>
                     <div className="form-group">
