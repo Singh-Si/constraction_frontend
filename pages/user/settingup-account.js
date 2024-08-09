@@ -19,6 +19,7 @@ const SetupAccount = (props) => {
         name: "",
         role: "",
         email: "",
+        company_name : ""
 
     }
 
@@ -42,7 +43,7 @@ const SetupAccount = (props) => {
             <Row className="text-end">
                 <Col lg="11" className="m-auto" >
                     <div className='logo text-start'>
-                        <img src="/assets/images/logo.png" alt="accoung image" />
+                    <img src="/assets/images/logo-company.png" width="100" alt="" style={{marginBottom : '4rem'}}/>
                     </div>
                 </Col>
             </Row>
@@ -76,6 +77,21 @@ const SetupAccount = (props) => {
                                         />
                                     </div>
 
+                                    <div className="form-group">
+                                        <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1">Your Email Id</label><span className="text-danger">*</span></div>
+                                        <Field type="text" name="email" className="form-control bg-white border-none" placeholder="Enter Your Email"
+
+
+                                        />
+
+                                        <ErrorMessage
+                                            name="email"
+                                            render={(msg) => (
+                                                <small style={{ color: "red" }}>{msg}</small>
+                                            )}
+                                        />
+                                    </div>
+
                                     <div className="form-group ">
                                         <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1 ">Job Title</label><span className="text-danger">*</span></div>
 
@@ -97,21 +113,6 @@ const SetupAccount = (props) => {
 
                                         <ErrorMessage
                                             name="role"
-                                            render={(msg) => (
-                                                <small style={{ color: "red" }}>{msg}</small>
-                                            )}
-                                        />
-                                    </div>
-
-                                    <div className="form-group">
-                                        <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1">Your Email Id</label><span className="text-danger">*</span></div>
-                                        <Field type="text" name="email" className="form-control bg-white border-none" placeholder="Enter Your Email"
-
-
-                                        />
-
-                                        <ErrorMessage
-                                            name="email"
                                             render={(msg) => (
                                                 <small style={{ color: "red" }}>{msg}</small>
                                             )}

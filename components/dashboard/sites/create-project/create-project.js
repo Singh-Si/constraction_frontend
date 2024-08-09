@@ -7,17 +7,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData } from "@/store/siteSlice";
 import { AddTeam } from "./AddTeam";
 import { Text } from "@chakra-ui/react";
-import { Select } from "@chakra-ui/react";
 import { getAllmember } from "@/store/member/allmember";
 import { validationSchema } from "@/schemas/create-project"; // Assuming you have a validation schema defined
+import Select from 'react-select';
 
 const CreateProject = () => {
   const [attachment, setAttachment] = useState(null); // State for file attachment
   const [imageFile, setImageFile] = useState(null); // State for image file
   const [imageUrl, setImageUrl] = useState(""); // State for image preview URL
-  const [selectedSitePoc, setSelectedSitePoc] = useState(""); // State for selected site POC
-  const [selectedProjectPoc, setSelectedProjectPoc] = useState(""); // State for selected project POC
   const [address, setAddress] = useState(""); // State for address
+  const [name , setName] = useState("");
+  const [startDate , setStartDate] = useState(null) 
+  const [endDate , setEndDate] = useState(null)
 
   const [addmemberState, setAddmemberState] = useState(false); // State for adding members
   const [siteId, setSiteId] = useState(""); // State for site ID
@@ -26,6 +27,9 @@ const CreateProject = () => {
   const [organizationName, setOrganizationName] = useState(""); // State for organization name
   const [existingSiteNames, setExistingSiteNames] = useState([]); // State for existing site names
   const [siteNameError, setSiteNameError] = useState(""); // State for site name error
+  const [selectedSitePoc, setSelectedSitePoc] = useState([]);
+  const [selectedProjectPoc, setSelectedProjectPoc] = useState([]);
+  const [isSamePoc, setIsSamePoc] = useState(false);
 
   const { currentOrganizationId, token } = parseCookies(); // Fetch cookies for organization ID and token
 
@@ -33,17 +37,59 @@ const CreateProject = () => {
   const { userData } = useSelector((state) => state?.getOrganizationAsync); // Select user data from Redux store
   const allMemberData = useSelector(state => state?.getAllmember?.allMemberData);
   const members = allMemberData ? allMemberData.members : undefined;
-
-  const handleSitePocChange = (event) => {
-    setSelectedSitePoc(event.target.value);
-  };
-
-  const handleProjectPocChange = (event) => {
-    setSelectedProjectPoc(event.target.value);
-  };
-
+  
   const handleAddressChange = (event) => {
     setAddress(event.target.value);
+  };
+  const memberOptions = members?.map((member) => ({
+    value: member.user.name,
+    label: member.user.name,
+    id : member.user._id
+  }));
+
+ 
+  const handleSitePocChange = (selectedOptions) => {
+    const selectedValues = selectedOptions ? selectedOptions?.map(option => option.value) : [];
+    setSelectedSitePoc(selectedValues);
+    
+    if (isSamePoc) {
+      setSelectedProjectPoc(selectedValues);
+    }
+  };
+  const handleProjectPocChange = (selectedOptions) => {
+    const selectedValues = selectedOptions ? selectedOptions.map(option => ({
+      id: option.id,
+      name: option.value
+    })) : [];
+    setSelectedProjectPoc(selectedValues);
+  };
+  const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      border: 'none',
+      height : '1rem',
+      boxShadow: 'none', 
+      '&:hover': {
+        border: 'none', 
+      },
+    }),
+  };
+
+  useEffect(()=>{
+    console.log("MEMBERS" , members)
+    console.log("SELECTED_POC" , selectedSitePoc)
+    console.log("PROJECT_POC" ,  selectedProjectPoc)
+    console.log("START_DATE" , startDate)
+    console.log("END_DATE" , endDate)
+    console.log("NAME" , name)
+  })
+
+
+  const handleCheckboxChange = () => {
+    setIsSamePoc(!isSamePoc);
+    if (!isSamePoc) {
+      setSelectedProjectPoc(selectedSitePoc);
+    }
   };
 
   const initialValues = {
@@ -127,16 +173,16 @@ const CreateProject = () => {
     }
   };
 
-  const onSubmit = async (values, { setSubmitting }) => {
+  const onSubmit = async (values) => {
     try {
       const formData = new FormData();
       formData.append("attachment", attachment);
-      formData.append("name", values.name);
-      formData.append("startDate", values.startDate);
-      formData.append("endDate", values.endDate);
-      formData.append("selected_site_poc", selectedSitePoc);
-      formData.append("selected_project_poc", selectedProjectPoc);
-      formData.append("address", address);
+      formData.append("name", name);
+      formData.append("startDate", startDate);
+      formData.append("endDate", endDate);
+      formData.append("sitePocId", selectedSitePoc);
+      formData.append("siteOfficeId", selectedProjectPoc);
+      // formData.append("address", address);
 
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/site/add`,
@@ -167,9 +213,7 @@ const CreateProject = () => {
         position: "top-center",
       });
       console.error("Error creating site:", error);
-    } finally {
-      setSubmitting(false);
-    }
+    } 
   };
 
   useEffect(() => {
@@ -246,8 +290,9 @@ const CreateProject = () => {
                       name="name"
                       className="form-control border-info"
                       placeholder="Enter Site Name"
+                      value={name}
                       onBlur={handleBlur}
-                      onChange={(e) => handleSiteNameChange(e, handleChange)}
+                      onChange={(e)=>{setName(e.target.value)}}
                     />
                     {siteNameError && (
                       <div className="text-danger">{siteNameError}</div>
@@ -282,7 +327,7 @@ const CreateProject = () => {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Image Upload</label>
+                    <label htmlFor="exampleInputPassword1">Site profile Image</label>
                     <input
                       type="file"
                       id="fileInput"
@@ -297,13 +342,10 @@ const CreateProject = () => {
                       <Field
                         type="date"
                         name="startDate"
+                        value={startDate}
                         className="form-control border-info"
                         placeholder="dd/mm/yyyy"
-                        onChange={(e) => {
-                          const newStartDate = e.target.value;
-                          setMinEndDate(CreateEndDate(newStartDate));
-                          handleChange(e);
-                        }}
+                        onChange={(e)=>{setStartDate(e.target.value)}}
                         min={CreateDate()}
                       />
                       <ErrorMessage
@@ -319,7 +361,9 @@ const CreateProject = () => {
                       <Field
                         type="date"
                         name="endDate"
+                        value={endDate}
                         className="form-control border-info"
+                        onChange={(e)=>{setEndDate(e.target.value)}}
                         placeholder="yyyy-MM-dd"
                         min={endDateState}
                       />
@@ -334,11 +378,8 @@ const CreateProject = () => {
                   <Text style={{ color: "#405768" }}>
                     Address & Contact Details
                   </Text>
-                  <div
-                    className="bg-light-blue mb-0"
-                    style={{ padding: "30px 20px" }}
-                  >
-                    <div className="form-group">
+                  <div className="">
+                  <div className="form-group">
                       <div className="text-start w-100 mb-2">
                         <label htmlFor="addressLine">Address Line</label>
                         <span className="text-danger">*</span>
@@ -353,69 +394,58 @@ const CreateProject = () => {
                         onChange={handleAddressChange}
                       />
                     </div>
-                    <div className="form-group">
-                      <div className="text-start w-100 mt-4">
-                        <label htmlFor="addressLine">Site POC</label>
-                        <span className="text-danger">*</span>
-                      </div>
-                      <select
-                        id="selectOption"
-                        name="selectOption"
-                        value={selectedSitePoc}
-                        onChange={handleSitePocChange}
-                        className="mt-1"
-                      >
-                        <option value="">Select a member</option>
-                        {members &&
-                          members.length > 0 &&
-                          members.map((member) => (
-                            <option
-                              key={member.user._id}
-                              value={member.user.name}
-                            >
-                              {member.user.name}
-                            </option>
-                          ))}
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <div className="text-start w-100 mt-4">
-                        <label htmlFor="addressLine">Project POC</label>
-                        <span className="text-danger">*</span>
-                      </div>
-                      <select
-                        id="selectOption"
-                        name="selectOption1"
-                        value={selectedProjectPoc}
-                        onChange={handleProjectPocChange}
-                        className="mt-1"
-                      >
-                        <option value="">Select a member</option>
-                        {members &&
-                          members.length > 0 &&
-                          members.map((member) => (
-                            <option
-                              name="selected_project_poc"
-                              key={member.user._id}
-                              value={member.user.name}
-                            >
-                              {member.user.name}
-                            </option>
-                          ))}
-                      </select>
-                    </div>
-                  </div>
+      <div className="form-group">
+        <div className="text-start w-100 mt-4">
+          <label htmlFor="selectOption">Site POC</label>
+          <span className="text-danger">*</span>
+        </div>
+        <Select
+          id="selectOption"
+          name="selectOption"
+          value={memberOptions?.filter(option => selectedSitePoc?.includes(option.value))}
+          onChange={handleSitePocChange}
+          options={memberOptions}
+          isMulti 
+          className="mt-1"
+          placeholder="Select multiple members"
+          styles={customStyles}
+        />
+      </div>
 
+      <div className="form-group mt-3">
+        <input
+          type="checkbox"
+          id="samePocCheckbox"
+          checked={isSamePoc}
+          onChange={handleCheckboxChange}
+        />
+        <label htmlFor="samePocCheckbox" className="ms-3">
+          Site POC is the same as Office POC
+        </label>
+      </div>
+
+      <div className="form-group">
+        <div className="text-start w-100 mt-4">
+          <label htmlFor="selectOption1">Office POC</label>
+          <span className="text-danger">*</span>
+        </div>
+        <Select
+          id="selectOption1"
+          name="selectOption1"
+          value={memberOptions?.filter(option => selectedProjectPoc?.includes(option.value))}
+          onChange={handleProjectPocChange}
+          options={memberOptions}
+          className="mt-1"
+          isMulti
+          placeholder="Select multiple members"
+          // styles={customStyles} // Ensure custom styles are applied here
+        />
+      </div>
+    </div>
                   <div className="text-start p-3 mt-1">
                     <button
-                      type="submit"
+                       onClick={onSubmit}
                       className="text-white bg-btn-bg m-auto w-100 auth_btn"
-                      disabled={
-                        !values.name ||
-                        !values.startDate ||
-                        !values.endDate ||
-                        siteNameError
-                      }
                     >
                       {isSubmitting ? (
                         <>

@@ -59,7 +59,8 @@ const Login = () => {
       <Row className="text-end">
         <Col lg="11" className="m-auto">
           <div className="logo text-start">
-            <img src="/assets/images/logo.png" alt="logo" />
+          <img src="/assets/images/logo-company.png" width="100" alt="" style={{marginBottom : '4rem'}}/>
+            
           </div>
         </Col>
       </Row>
@@ -93,17 +94,9 @@ const Login = () => {
                   />
                 </div>
 
-                <div className="">
-                  <label
-                    id="phone-desc"
-                    className="phone-desc form-text text-muted "
-                  >
-                    We will send an OTP for verification.
-                  </label>
-                </div>
               </div>
               <div>
-                <div className="text-start w-100 mt-2">
+                <div className="text-start w-100">
                   <button
                     type="submit"
                     className="text-white m-auto w-100 bg-btn-bg auth_btn"
