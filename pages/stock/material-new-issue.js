@@ -15,6 +15,7 @@ const MaterialIssue = ({ materialIssued }) => {
     const [materialIssue, setMaterialIssue] = useState([]);
     const [modal  , setModal] = useState(false)
     const [subContract , setSubContract] = useState(true)
+    const [count , setCount] = useState(1)
 
 
 const router = useRouter()
@@ -31,6 +32,10 @@ setSubContract(true)
 // router.push('/stock/material-new-issue?q=sub-contractor')
 }
 
+
+const handleAddMaterial = ()=>{
+  console.log("HANDLE MATERIAL")
+}
 const handleOtherSiteButton = ()=>{
     setSubContract(false)
     // router.push('/stock/material-new-issue?q=other-site')
@@ -79,7 +84,7 @@ const AddMaterialComponent  = ()=>{
                 srNo : index+1,
                 MaterialName : info.materialName , 
                 Task : 'View ' , 
-                IssuedTo : 'No detail' , 
+                IssuedTo : 'Sub Contractor' , 
                 checkedBy :  'No Detail' , 
                 IssuedBy :  'No Detail' , 
                 File : 'No Detail',

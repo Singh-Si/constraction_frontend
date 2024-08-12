@@ -25,7 +25,7 @@ const SetupAccount = (props) => {
     const onSubmit = async (values) => {
         try {
             const { name, role, email } = values;
-            const response = await dispatch(settingAccountAsync({ name, role, email }));
+            const response = await dispatch(settingAccountAsync({ name, role, companyName }));
 
             if (response?.payload?.success) {
                 router.push("/user/create-organisation");
@@ -77,30 +77,22 @@ const SetupAccount = (props) => {
                                     </div>
 
                                     <div className="form-group ">
-                                        <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1 ">Job Title</label><span className="text-danger">*</span></div>
-
+                                    <div className="form-group ">
+                                        <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1 ">Enter Company Name</label><span className="text-danger">*</span></div>
                                         <Field
-                                            as="select"  // Use "as" attribute to specify the HTML element type
-                                            name="role"
-                                            className="form-select form-control bg-white border-none" // Use "form-select" for Bootstrap form styling
-                                            aria-label="Default select example"
-                                        >
-                                            <option value="">Select Role</option>
-                                            {props?.roles?.map((curVal) => {
-
-                                                const { _id, name } = curVal;
-                                                return (
-                                                    <option key={_id} value={_id}>{name}</option>
-                                                )
-                                            })}
-                                        </Field>
+                                            type="text"
+                                            name='companyName'
+                                            className="form-control bg-white border-none"
+                                            placeholder="Enter Company Name"
+                                        />
 
                                         <ErrorMessage
-                                            name="role"
+                                            name="companyName"
                                             render={(msg) => (
                                                 <small style={{ color: "red" }}>{msg}</small>
                                             )}
                                         />
+                                    </div>
                                     </div>
 
                                     <div className="form-group">

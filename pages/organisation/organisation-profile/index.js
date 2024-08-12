@@ -792,7 +792,7 @@ Easily control how you receive your daily progress updates.
         </div>
                 <div className="col-4">
           <Link
-            href="/sites/purchase-order"
+            href="/organisation/organisation-profile/material-issued-categories-details"
             className="text-decoration-none text-black"
           >
             <div className="h-75 border-black d-flex p-4 gap-3 site-border-design">
@@ -804,8 +804,8 @@ Easily control how you receive your daily progress updates.
                   height={40}
                 />
               </div>
-
               <div className="d-flex flex-column justify-content-center">
+               
                 <span className="fw-bold">Material Issued </span>
                 <small className="text-darkgrey ">Add and manage Material</small>
               </div>

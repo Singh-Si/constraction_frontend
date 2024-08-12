@@ -109,8 +109,8 @@ const Header = () => {
   return (
     <>
       <Navbar dark expand="md" className="bg-white border_bottom sticky-top">
-        <Nav className="me-auto text-white">
-          <img src="/assets/images/solis-reality.png" alt="solis-reality.png" />
+        <Nav className="me-auto text-white" style={{marginLeft : '30rem'}} >
+          <img src="/assets/images/solis-reality.png" alt="solis-reality.png"/>
         </Nav>
         <div className="dropstart">
           <button
