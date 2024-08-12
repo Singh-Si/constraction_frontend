@@ -19,14 +19,13 @@ const SetupAccount = (props) => {
         name: "",
         role: "",
         email: "",
-        company_name : ""
 
     }
 
     const onSubmit = async (values) => {
         try {
             const { name, role, email } = values;
-            const response = await dispatch(settingAccountAsync({ name, role, email }));
+            const response = await dispatch(settingAccountAsync({ name, role, companyName }));
 
             if (response?.payload?.success) {
                 router.push("/user/create-organisation");
@@ -43,7 +42,7 @@ const SetupAccount = (props) => {
             <Row className="text-end">
                 <Col lg="11" className="m-auto" >
                     <div className='logo text-start'>
-                    <img src="/assets/images/logo-company.png" width="100" alt="" style={{marginBottom : '4rem'}}/>
+                        <img src="/assets/images/logo.png" alt="accoung image" />
                     </div>
                 </Col>
             </Row>
@@ -77,6 +76,25 @@ const SetupAccount = (props) => {
                                         />
                                     </div>
 
+                                    <div className="form-group ">
+                                    <div className="form-group ">
+                                        <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1 ">Enter Company Name</label><span className="text-danger">*</span></div>
+                                        <Field
+                                            type="text"
+                                            name='companyName'
+                                            className="form-control bg-white border-none"
+                                            placeholder="Enter Company Name"
+                                        />
+
+                                        <ErrorMessage
+                                            name="companyName"
+                                            render={(msg) => (
+                                                <small style={{ color: "red" }}>{msg}</small>
+                                            )}
+                                        />
+                                    </div>
+                                    </div>
+
                                     <div className="form-group">
                                         <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1">Your Email Id</label><span className="text-danger">*</span></div>
                                         <Field type="text" name="email" className="form-control bg-white border-none" placeholder="Enter Your Email"
@@ -86,33 +104,6 @@ const SetupAccount = (props) => {
 
                                         <ErrorMessage
                                             name="email"
-                                            render={(msg) => (
-                                                <small style={{ color: "red" }}>{msg}</small>
-                                            )}
-                                        />
-                                    </div>
-
-                                    <div className="form-group ">
-                                        <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1 ">Job Title</label><span className="text-danger">*</span></div>
-
-                                        <Field
-                                            as="select"  // Use "as" attribute to specify the HTML element type
-                                            name="role"
-                                            className="form-select form-control bg-white border-none" // Use "form-select" for Bootstrap form styling
-                                            aria-label="Default select example"
-                                        >
-                                            <option value="">Select Role</option>
-                                            {props?.roles?.map((curVal) => {
-
-                                                const { _id, name } = curVal;
-                                                return (
-                                                    <option key={_id} value={_id}>{name}</option>
-                                                )
-                                            })}
-                                        </Field>
-
-                                        <ErrorMessage
-                                            name="role"
                                             render={(msg) => (
                                                 <small style={{ color: "red" }}>{msg}</small>
                                             )}
