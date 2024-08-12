@@ -13,7 +13,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { useEffect } from 'react';
 
 
-const index = () => {
+const MaterialCategories = () => {
     const [categoriesDetails , setCategoies] = useState([])
     const [showModal, setShowModal] = useState(false);
     const [subModal , setSubModal] = useState(false)
@@ -319,5 +319,5 @@ useEffect(()=>{
   )
 }
 
-export default index
+export default MaterialCategories
 
