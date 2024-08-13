@@ -262,7 +262,7 @@ const CreateProject = ({ setNewSite, newsite }) => {
   const formatDate = (date) => date.toISOString().split("T")[0];
 
   const CreateDate = () => formatDate(new Date());
-
+  
   const CreateEndDate = (startDate) => {
     const formattedStartDate = new Date(startDate);
     const nextDay = new Date(formattedStartDate);
@@ -394,7 +394,6 @@ const CreateProject = ({ setNewSite, newsite }) => {
 
   return (
     <>
-      {/* {newsite ? ( */}
         <div
           className="offcanvas offcanvas-end w-25 bg-white "
           tabIndex="-1"

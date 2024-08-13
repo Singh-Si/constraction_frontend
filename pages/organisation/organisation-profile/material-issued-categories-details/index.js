@@ -29,10 +29,32 @@ const MaterialCategories = () => {
     const [categoryId , setCategoryId]  = useState(null)
     const [viewModal , setViewModal] = useState(false)
     const [categoryseleteced , setCategorySelected] = useState(null)
+    const [catgId , setCatgId] = useState(null)
+    const [subCatgData , setSubCatgData] = useState(null)
     const route = useRouter()
     
 
-    // getting the list of the 
+    // getting the list of the subCategory 
+
+    const fetchCategories = (organizationId)=>{
+        if(organizationId &&  catgId){
+            let config = {
+                method: 'get',
+                maxBodyLength: Infinity,
+                url: `https://construction-backend.onrender.com/materialIssuedSubCategory/get?organization=${organizationId}&categoryId=${catgId}`,
+                headers: { 
+                  'Authorization': `Bearer ${token}`
+                }
+              };
+              axios.request(config)
+             .then((response) => {
+            console.log(response.data);
+        })
+        .catch((error) => {
+        console.log(error)});
+        }
+    }
+
     
     const headerStyle = {
         backgroundColor: "#405768",
@@ -67,27 +89,33 @@ const MaterialCategories = () => {
         background: "none",
       };
     
-    const handleView = (rowData)=>{
+    const handleView = (rowData , id)=>{
+        console.log("ID : " , id)
         setViewModal(true)
-        console.log('hey u have clicked on view page')
+        console.log("ID : " , id)
+        console.log("ROW DATA :" , rowData)
+    console.log("Category_ID:" , catgId)
         setCategorySelected(rowData)
+        if(!null){
+               setCatgId(id)
+        }
     }
     const handleAddNewCategory = ()=>{
       setShowModal(true)
     }
-    
 
+ 
     const handleAddSubCategory = ()=>{
         setSubModal(true)
     }
 
 
-// FETCHING THE LIST OF THE SUB-CATEGORY 
+
+// executing the function for the fetching of subCategory Details 
 
 useEffect(()=>{
-
-},[currentOrganizationId , token ])
-
+fetchCategories(currentOrganizationId)
+},[viewModal])
 
  const handleCreateSubCategory = async()=>{
     let data = JSON.stringify({
@@ -129,9 +157,6 @@ useEffect(()=>{
 
 
 
-useEffect(()=>{
-    console.log(value?.value , subCategoryValue)
-})
  useEffect(()=>{
     const getMaterialOptions = async()=>{
       const response = await axios.get(`https://construction-backend.onrender.com/materialIssuedCategory/get?organization=${currentOrganizationId}` , {
@@ -146,7 +171,7 @@ useEffect(()=>{
             label: item.name.trim(),
             materialCategory : item.name.trim() , 
             srNo : index + 1 , 
-            materialSubCategoryList : <Button style={{color : 'rgba(32, 117, 169, 1)' , textDecoration : "underline" , backgroundColor : 'none'}} onClick={()=>{handleView(item.name)}}>VIEW</Button> , 
+            materialSubCategoryList : <Button style={{color : 'rgba(32, 117, 169, 1)' , textDecoration : "underline" , backgroundColor : 'none'}} onClick={()=>{handleView(item.name , item._id)}}>VIEW</Button> , 
             edit: (
                 <div style={{ display: 'flex', gap: '10px' }}>
                     <FaEdit style={{ cursor: 'pointer' }} />
@@ -344,7 +369,7 @@ useEffect(()=>{
 
             <button
               className="close-button"
-              onClick={() => setShowModal(false)}
+              onClick={() => setViewModal(false)}
             >
               X
             </button>
