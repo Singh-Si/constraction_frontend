@@ -395,7 +395,7 @@ const CreateProject = () => {
               <Form className="d-flex flex-column">
                 <div className="offcanvas-header bg-light-blue mb-0">
                   <h5 className="offcanvas-title" id="offcanvasRightLabel">
-                    Create New Sites
+                    {/* Create New Site */}
                   </h5>
                   <button
                     type="button"
