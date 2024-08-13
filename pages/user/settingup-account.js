@@ -42,7 +42,7 @@ const SetupAccount = (props) => {
             <Row className="text-end">
                 <Col lg="11" className="m-auto" >
                     <div className='logo text-start'>
-                        <img src="/assets/images/logo.png" alt="accoung image" />
+                    <img src="/assets/images/logo-company.png" width="100" alt="" style={{marginBottom : '4rem'}}/>
                     </div>
                 </Col>
             </Row>
