@@ -17,15 +17,15 @@ const SetupAccount = (props) => {
 
     const initialValues = {
         name: "",
-        role: "",
         email: "",
+        companyName : "",
 
     }
 
     const onSubmit = async (values) => {
         try {
-            const { name, role, email } = values;
-            const response = await dispatch(settingAccountAsync({ name, role, email }));
+            const { name, companyName, email } = values;
+            const response = await dispatch(settingAccountAsync({ name, companyName, email }));
 
             if (response?.payload?.success) {
                 router.push("/user/create-organisation");
@@ -42,7 +42,7 @@ const SetupAccount = (props) => {
             <Row className="text-end">
                 <Col lg="11" className="m-auto" >
                     <div className='logo text-start'>
-                        <img src="/assets/images/logo.png" alt="accoung image" />
+                    <img src="/assets/images/logo-company.png" width="100" alt="" style={{marginBottom : '4rem'}}/>
                     </div>
                 </Col>
             </Row>
@@ -54,7 +54,7 @@ const SetupAccount = (props) => {
                         <Formik
                             enableReinitialize
                             initialValues={initialValues}
-                            validationSchema={validationSchema}
+                            // validationSchema={validationSchema}
                             onSubmit={onSubmit}
                         >
                             {() => {
@@ -75,33 +75,22 @@ const SetupAccount = (props) => {
                                             )}
                                         />
                                     </div>
+                                    
+                                    <div className="form-group">
+                                        <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1">Company Name</label><span className="text-danger">*</span></div>
+                                        <Field type="text" name="companyName" className="form-control bg-white border-none" placeholder="Enter Your Company Name"
 
-                                    <div className="form-group ">
-                                        <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1 ">Job Title</label><span className="text-danger">*</span></div>
 
-                                        <Field
-                                            as="select"  // Use "as" attribute to specify the HTML element type
-                                            name="role"
-                                            className="form-select form-control bg-white border-none" // Use "form-select" for Bootstrap form styling
-                                            aria-label="Default select example"
-                                        >
-                                            <option value="">Select Role</option>
-                                            {props?.roles?.map((curVal) => {
-
-                                                const { _id, name } = curVal;
-                                                return (
-                                                    <option key={_id} value={_id}>{name}</option>
-                                                )
-                                            })}
-                                        </Field>
+                                        />
 
                                         <ErrorMessage
-                                            name="role"
+                                            name="companyName"
                                             render={(msg) => (
                                                 <small style={{ color: "red" }}>{msg}</small>
                                             )}
                                         />
                                     </div>
+                                   
 
                                     <div className="form-group">
                                         <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1">Your Email Id</label><span className="text-danger">*</span></div>

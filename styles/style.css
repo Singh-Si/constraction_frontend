@@ -3339,3 +3339,25 @@ th {
   cursor: pointer;
   color: #333;
 }
+
+.material-issued-categories-buttons{
+
+  display : 'flex' ;
+  justify-content: space-between;
+}
+
+
+.creation-input {
+  text-decoration: none;
+  border : 1px solid rgba(32, 141, 182, 0.5);
+  width : 540px;
+  height : 45px;
+  padding : 1rem;
+  border-radius: 0%;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+.creation-input::selection {
+  border : none;
+  font-size: 3rem;
+}

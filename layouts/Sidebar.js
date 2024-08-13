@@ -116,21 +116,7 @@ const Sidebar = () => {
               activeclassname="activeClicked"
             >
               <div className="">
-                <Link
-                  href="/all-bills"
-                  className="text-decoration-none px-2 sidebar-icon"
-                >
-                 <i class="bi bi-wallet2" style={{color : 'white' , textAlign : 'center' , fontSize :'1.8rem' , marginLeft : '1rem'}}></i>
-                  {/* <Image
-                    src="/assets/images/bill_icon.svg"
-                    alt="side_homeIcon"
-                    width={40}
-                    height={40}
-                  /> */}
-                  <div className="text-light-gray text-center">
-                    <small>Budget</small>
-                  </div>
-                </Link>
+               
               </div>
               {/* <ul className="dropdown-menu">
                 <li>

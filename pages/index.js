@@ -131,6 +131,7 @@ const Starter = () => {
                 <button
                   className="btn bg-btn-bg btn-sm text-white float-end"
                   type="button"
+                  style={{width : '15%'}}
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasRight"
                   aria-controls="offcanvasRight"
