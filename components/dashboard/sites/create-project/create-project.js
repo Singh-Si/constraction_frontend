@@ -38,6 +38,7 @@ const CreateProject = () => {
   const [name, setName] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [pinCode, setPinCode] = useState('');
 
   const [addmemberState, setAddmemberState] = useState(false); // State for adding members
   const [siteId, setSiteId] = useState(""); // State for site ID
@@ -296,6 +297,8 @@ const CreateProject = () => {
     }
   };
 
+  console.log(selectedCountry,"selectedCountry")
+
   const onSubmit = async (values) => {
     try {
       const formData = new FormData();
@@ -305,10 +308,10 @@ const CreateProject = () => {
       formData.append("endDate", endDate);
       formData.append("sitePocId", selectedSitePoc);
       formData.append("siteOfficeId", selectedProjectPoc);
-      formData.append("pinCode", selectedProjectPoc);
-      formData.append("Country", selectedProjectPoc);
-      formData.append("State", selectedProjectPoc);
-      formData.append("city", selectedProjectPoc);
+      formData.append("pinCode", pinCode);
+      formData.append("Country", selectedCountry.label);
+      formData.append("State", selectedState.label);
+      formData.append("city", selectedCity.label);
       // formData.append("address", address);
 
       const response = await axios.post(
@@ -395,7 +398,7 @@ const CreateProject = () => {
               <Form className="d-flex flex-column">
                 <div className="offcanvas-header bg-light-blue mb-0">
                   <h5 className="offcanvas-title" id="offcanvasRightLabel">
-                    {/* Create New Site */}
+                    Create New Site
                   </h5>
                   <button
                     type="button"
@@ -534,11 +537,11 @@ const CreateProject = () => {
                         <label>PinCode</label>
                         <Field
                           type="text"
-                          name="startDate"
+                          name="pinCode"
                           className="form-control border-info"
-                          value={startDate}
-                          onChange={(e) => setStartDate(e.target.value)}
-                          min={CreateDate()}
+                          value={pinCode}
+                          onChange={(e) => setPinCode(e.target.value)}
+          
                         />
                       </div>
                       <div className="form-group col-6">
