@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Button } from "primereact/button";
+// import { Button } from "primereact/button";
 import { parseCookies } from 'nookies';
 import nookies from 'nookies'
 import axios from 'axios';
@@ -11,6 +11,9 @@ import { useRouter } from 'next/router';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useEffect } from 'react';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import { Button } from '@chakra-ui/react';
+
 
 
 const MaterialCategories = () => {
@@ -24,6 +27,8 @@ const MaterialCategories = () => {
     const [inputValue, setInputValue] = React.useState('');
     const [subCategoryValue , setSubCategoryValue] = useState('')
     const [categoryId , setCategoryId]  = useState(null)
+    const [viewModal , setViewModal] = useState(false)
+    const [categoryseleteced , setCategorySelected] = useState(null)
     const route = useRouter()
     
 
@@ -41,6 +46,19 @@ const MaterialCategories = () => {
         borderBottom: "1px solid #ddd",
         minWidth : '150px',
       };
+      const renderButton1 = (rowData) => {
+        return (
+          <Button
+            class="button"
+            onClick={handleView}
+            label="View"
+            style={{
+              background: "none",
+              color: "#2075A9",
+            }}
+          />
+        );
+      };
       const buttonStyle = {
         borderRight: "1px solid #ddd",
         borderBottom: "1px solid #ddd",
@@ -48,7 +66,12 @@ const MaterialCategories = () => {
         overflow: "scrollable",
         background: "none",
       };
-
+    
+    const handleView = (rowData)=>{
+        setViewModal(true)
+        console.log('hey u have clicked on view page')
+        setCategorySelected(rowData)
+    }
     const handleAddNewCategory = ()=>{
       setShowModal(true)
     }
@@ -57,6 +80,13 @@ const MaterialCategories = () => {
     const handleAddSubCategory = ()=>{
         setSubModal(true)
     }
+
+
+// FETCHING THE LIST OF THE SUB-CATEGORY 
+
+useEffect(()=>{
+
+},[currentOrganizationId , token ])
 
 
  const handleCreateSubCategory = async()=>{
@@ -110,12 +140,25 @@ useEffect(()=>{
             }
         })
        const data = response.data.data
-       const materialOptions = data.map((item) => ({
-        value: item._id,
-        label: item.name.trim(),
-    }));
+       const materialOptions = data.map((item , index) => {
+        return {
+            value: item._id,
+            label: item.name.trim(),
+            materialCategory : item.name.trim() , 
+            srNo : index + 1 , 
+            materialSubCategoryList : <Button style={{color : 'rgba(32, 117, 169, 1)' , textDecoration : "underline" , backgroundColor : 'none'}} onClick={()=>{handleView(item.name)}}>VIEW</Button> , 
+            edit: (
+                <div style={{ display: 'flex', gap: '10px' }}>
+                    <FaEdit style={{ cursor: 'pointer' }} />
+                    <FaTrashAlt style={{ cursor: 'pointer' }} />
+                </div>
+            )
+        }
+       
+    });
     setMaterialIssueData(materialOptions)
     }
+    console.log(materialIssueData)
     getMaterialOptions()
     setCategoryId(value?.value)
    
@@ -199,7 +242,7 @@ useEffect(()=>{
         <div className="card" style={{maxWidth :"100%" , marginTop : '1rem' }}>
         <div className="data-table-container" style={{maxWidth :"1300px" , overflowX :'auto'}}>
           <DataTable
-            // value={upcomingDelivery}
+            value={materialIssueData}
             paginator
             rows={5}
             rowsPerPageOptions={[5, 10, 25, 50]}
@@ -223,6 +266,15 @@ useEffect(()=>{
               field="materialSubCategoryList"
               header="Material Sub-Category List"
               headerStyle={headerStyle}
+              bodyStyle = {buttonStyle}
+            //   body = {renderButton1}
+
+            />
+        
+            <Column
+              field="edit"
+              header="EDIT/DELETE"
+              headerStyle={headerStyle}
               bodyStyle={bodyStyle}
 
             />
@@ -235,6 +287,41 @@ useEffect(()=>{
           <div className="modal-content-upcoming-delivery" style={{width : '40%' , height : '40%'}}>
             <h6 style={{ textAlign: "left", color: "#405768" , marginRight : '8rem' ,  }}>
                 ADD NEW MATERIAL ISSUED CATEGORY <br/>
+                <p style={{marginTop : '4rem'}}><span style={{color : 'rgba(33, 35, 37, 0.37)'}}>Write</span> New Category Name</p>
+
+                <input  className="creation-input" value={categoryName} onChange={(e)=>{setCategoryName(e.target.value)}}/>
+                <div className='col-2' style={{width : "80%" , textAlign : "center" , marginTop : '4rem' , marginLeft : "5rem"}}>
+              <button
+                type="button"
+                style={{
+                  background: "none",
+                  border: '1px solid rgba(32, 141, 182, 0.5)',
+                  borderRadius: '2px',
+                  color: 'rgba(32, 141, 182, 0.5)',
+                  fontWeight: 'bold',
+                }}
+                onClick={handleCreateCategory}
+              >
+                CREATE
+              </button>
+            </div>
+            </h6>
+
+            <button
+              className="close-button"
+              onClick={() => setShowModal(false)}
+            >
+              X
+            </button>
+      
+        </div>
+        </div>
+        }
+    {viewModal &&  <div className="modal-upcoming-delivery">
+          <div className="modal-content-upcoming-delivery" style={{width : '40%' , height : '50%'}}>
+            <h6 style={{ textAlign: "left", color: "#405768" , marginRight : '8rem' ,  }}>
+                <h6>Work Category</h6>
+                <input  className="creation-input" value={categoryseleteced} /> <br/>
                 <p style={{marginTop : '4rem'}}><span style={{color : 'rgba(33, 35, 37, 0.37)'}}>Write</span> New Category Name</p>
 
                 <input  className="creation-input" value={categoryName} onChange={(e)=>{setCategoryName(e.target.value)}}/>

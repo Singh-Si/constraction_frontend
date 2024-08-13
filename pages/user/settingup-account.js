@@ -19,12 +19,13 @@ const SetupAccount = (props) => {
         name: "",
         role: "",
         email: "",
+        companyName : ""
 
     }
 
     const onSubmit = async (values) => {
         try {
-            const { name, role, email } = values;
+            const { name, role, email , companyName } = values;
             const response = await dispatch(settingAccountAsync({ name, role, companyName }));
 
             if (response?.payload?.success) {
@@ -68,12 +69,12 @@ const SetupAccount = (props) => {
                                             placeholder="Enter Name"
                                         />
 
-                                        <ErrorMessage
+                                        {/* <ErrorMessage
                                             name="name"
                                             render={(msg) => (
                                                 <small style={{ color: "red" }}>{msg}</small>
                                             )}
-                                        />
+                                        /> */}
                                     </div>
 
                                     <div className="form-group ">
@@ -86,12 +87,12 @@ const SetupAccount = (props) => {
                                             placeholder="Enter Company Name"
                                         />
 
-                                        <ErrorMessage
+                                        {/* <ErrorMessage
                                             name="companyName"
                                             render={(msg) => (
                                                 <small style={{ color: "red" }}>{msg}</small>
                                             )}
-                                        />
+                                        /> */}
                                     </div>
                                     </div>
 
@@ -101,13 +102,13 @@ const SetupAccount = (props) => {
 
 
                                         />
-
+{/* 
                                         <ErrorMessage
                                             name="email"
                                             render={(msg) => (
                                                 <small style={{ color: "red" }}>{msg}</small>
                                             )}
-                                        />
+                                        /> */}
                                     </div>
 
                                     {/* <div className="form-group">
