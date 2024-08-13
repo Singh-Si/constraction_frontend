@@ -80,7 +80,7 @@ const addMember = async () => {
         const userData = response.data;
         if (userData.success) {
             toast.success("Member Added Successfully", { position: "top-center" });
-            router.push(router.asPath);
+            // location.reload('/');
             closeModal();
         } else {
             toast.error(userData.error, { position: "top-center" });
@@ -117,7 +117,7 @@ const addMember = async () => {
                                                         </div>
                                                         <div>
                                                             <label className="form-check-label text-black d-flex flex-column gap-1" htmlFor={`flexCheck${index}`}>
-                                                                {/* <span>{item?.name}</span> */}
+                                                                <span>{item?.name}</span>
                                                             </label>
                                                         </div>
                                                     </div>

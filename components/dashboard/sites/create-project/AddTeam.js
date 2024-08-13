@@ -99,9 +99,11 @@
 
 import SyncMember from "@/components/utils/Modal/Syncmember";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export const AddTeam = ({ siteId, setAddmemberState, onClose,showAddTeamModal }) => {
     const [syncModal, setsyncModal] = useState(false);
+    const router = useRouter()
 
     const handleSyncModal = () => {
         setsyncModal(true);
@@ -172,7 +174,7 @@ export const AddTeam = ({ siteId, setAddmemberState, onClose,showAddTeamModal })
                         className="m-auto w-50 border border-info bg-white shadow border-info auth_btn"
                         data-bs-dismiss="offcanvas"
                         aria-label="Close"
-                        onClick={onClose}
+                        onClick={()=>{location.reload('/')}}
                     >
                         Skip Do It Later
                     </button>

@@ -10,6 +10,7 @@ import { Text } from "@chakra-ui/react";
 import { getAllmember } from "@/store/member/allmember";
 import { validationSchema } from "@/schemas/create-project"; // Assuming you have a validation schema defined
 import Select from "react-select";
+import { useRouter } from "next/router";
 
 const customStyles = {
   control: (provided, state) => ({
@@ -58,6 +59,7 @@ const CreateProject = ({ setNewSite, newsite }) => {
   const [selectedCity, setSelectedCity] = useState(null);
 
   const [showAddTeamModal, setShowAddTeamModal] = useState(false);
+  const route = useRouter()
 
   const { currentOrganizationId, token } = parseCookies(); // Fetch cookies for organization ID and token
 
@@ -683,7 +685,7 @@ const CreateProject = ({ setNewSite, newsite }) => {
                     </div>
                     <div className="text-start p-3 mt-1">
                       <button
-                        onClick={onSubmit}
+                        type="submit"
                         className="text-white bg-btn-bg m-auto w-100 auth_btn"
                       >
                         {isSubmitting ? (
