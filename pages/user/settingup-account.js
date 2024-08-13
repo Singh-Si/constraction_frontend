@@ -17,16 +17,15 @@ const SetupAccount = (props) => {
 
     const initialValues = {
         name: "",
-        role: "",
         email: "",
-        companyName : ""
+        companyName : "",
 
     }
 
     const onSubmit = async (values) => {
         try {
-            const { name, role, email , companyName } = values;
-            const response = await dispatch(settingAccountAsync({ name, role, companyName }));
+            const { name, companyName, email } = values;
+            const response = await dispatch(settingAccountAsync({ name, companyName, email }));
 
             if (response?.payload?.success) {
                 router.push("/user/create-organisation");
@@ -55,7 +54,7 @@ const SetupAccount = (props) => {
                         <Formik
                             enableReinitialize
                             initialValues={initialValues}
-                            validationSchema={validationSchema}
+                            // validationSchema={validationSchema}
                             onSubmit={onSubmit}
                         >
                             {() => {
@@ -69,32 +68,29 @@ const SetupAccount = (props) => {
                                             placeholder="Enter Name"
                                         />
 
-                                        {/* <ErrorMessage
+                                        <ErrorMessage
                                             name="name"
                                             render={(msg) => (
                                                 <small style={{ color: "red" }}>{msg}</small>
                                             )}
-                                        /> */}
+                                        />
                                     </div>
+                                    
+                                    <div className="form-group">
+                                        <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1">Company Name</label><span className="text-danger">*</span></div>
+                                        <Field type="text" name="companyName" className="form-control bg-white border-none" placeholder="Enter Your Company Name"
 
-                                    <div className="form-group ">
-                                    <div className="form-group ">
-                                        <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1 ">Enter Company Name</label><span className="text-danger">*</span></div>
-                                        <Field
-                                            type="text"
-                                            name='companyName'
-                                            className="form-control bg-white border-none"
-                                            placeholder="Enter Company Name"
+
                                         />
 
-                                        {/* <ErrorMessage
+                                        <ErrorMessage
                                             name="companyName"
                                             render={(msg) => (
                                                 <small style={{ color: "red" }}>{msg}</small>
                                             )}
-                                        /> */}
+                                        />
                                     </div>
-                                    </div>
+                                   
 
                                     <div className="form-group">
                                         <div className='text-start w-100 mb-2'><label htmlFor="exampleInputPassword1">Your Email Id</label><span className="text-danger">*</span></div>
@@ -102,13 +98,13 @@ const SetupAccount = (props) => {
 
 
                                         />
-{/* 
+
                                         <ErrorMessage
                                             name="email"
                                             render={(msg) => (
                                                 <small style={{ color: "red" }}>{msg}</small>
                                             )}
-                                        /> */}
+                                        />
                                     </div>
 
                                     {/* <div className="form-group">
