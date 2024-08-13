@@ -14,6 +14,7 @@ const Starter = () => {
   const [loading, setLoading] = useState(false);
   const [existingSiteNames, setExistingSiteNames] = useState([]);
   const [deletion, setDeletion] = useState(false);
+  const [newsite, setNewSite] = useState(true);
   const dispatch = useDispatch();
   const { permissions, status } = useSelector(
     (state) => state?.UserPermisionSlice
@@ -131,7 +132,7 @@ const Starter = () => {
                 <button
                   className="btn bg-btn-bg btn-sm text-white float-end"
                   type="button"
-                  style={{width : '15%'}}
+                  style={{ width: "15%" }}
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasRight"
                   aria-controls="offcanvasRight"
@@ -200,6 +201,8 @@ const Starter = () => {
         </>
       )}
       <CreateProject
+        setNewSite={setNewSite}
+        newsite={newsite}
         onCreateSite={handleCreateSite}
         existingSiteNames={existingSiteNames}
       />
